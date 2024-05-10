@@ -36,3 +36,18 @@
                 registerPopup.classList.add('hidden');
             }
         });
+
+
+        window.addEventListener('scroll', function() {
+            var elementsToFadeIn = document.querySelectorAll('.fade-in-element');
+        
+            elementsToFadeIn.forEach(function(element) {
+                var elementPosition = element.getBoundingClientRect().top;
+                var windowHeight = window.innerHeight;
+                var fadeInThreshold = windowHeight / 2;
+                var opacity = 1 - Math.max(0, Math.min(1, (elementPosition - fadeInThreshold) / fadeInThreshold));
+        
+                element.style.opacity = opacity;
+            });
+        });
+        

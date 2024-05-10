@@ -38,16 +38,16 @@ include './backend/user.php';
 <body>
     <div class="z-10 text-center min-h-screen overflow-hidden shadow-xl rounded-3xl">
         <div class="absolute bottom-32 right-2/4 w-3/6  z-0" style="z-index: 1;"></div>
-        <div class="text-center">
+        <div class="text-center mt-10">
             <p class="font-['Sora'] text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-950">Rent A Car</p>
-            <ul class="mt-6 flex justify-center text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-900">
+            <ul class="mt-10 flex justify-center text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-900">
                 <li class="mr-6">1. Choose</li>
                 <li class="mr-6">2. Confirm</li>
                 <li>3. Drive</li>
             </ul>
         </div>
     <br>
-    <div class="text-center">
+    <div class="text-center mt-10">
         <a id="loginButton" title="" class="font-['Uber Move'] inline-flex  mr-3 px-8  py-3 text-2xl font-normal  text-white transition-all duration-200 bg-green-700 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Login </a>
         <a id="registerButton" title="" class="font-['Uber Move'] inline-flex  px-8  py-3 text-2xl font-normal text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Register </a>
     </div>
@@ -60,7 +60,7 @@ include './backend/user.php';
   <div class="basis-1/2 p-24 rounded-2xl shadow-2xl ">
   <img src="img/home-1.webp">  
   </div>
-  <div class="basis-1/2 p-24 font-['Uber Move'] text-8xl font-extrabold shadow-inner">
+  <div class="fade-in-element basis-1/2 p-24 font-['Uber Move'] text-8xl font-extrabold shadow-inner">
     <h1>Request a ride, hop in, and go.</h1>
     </div>
 </div>
@@ -68,7 +68,7 @@ include './backend/user.php';
 
 <div class="flex flex-row  rounded-3xl ">
 
-  <div class="basis-1/2 p-24 font-['Uber Move'] text-8xl font-extrabold shadow-inner">
+  <div  class="fade-in-element basis-1/2 p-24 font-['Uber Move'] text-8xl font-extrabold shadow-inner">
     <h1> Drive when you want, make what you need</h1>
     </div>
     <div class="basis-1/2 p-24 rounded-2xl shadow-2xl ">
