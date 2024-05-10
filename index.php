@@ -10,7 +10,7 @@ include './backend/user.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sora&family=Manrope&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora&family=Manrope&family=Josefin+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/uber-move-text" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/mona-sans" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -47,11 +47,27 @@ include './backend/user.php';
             </ul>
         </div>
     <br>
-    <div class="text-center mt-10">
-        <a id="loginButton" title="" class="font-['Uber Move'] inline-flex  mr-3 px-8  py-3 text-2xl font-normal  text-white transition-all duration-200 bg-green-700 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Login </a>
-        <a id="registerButton" title="" class="font-['Uber Move'] inline-flex  px-8  py-3 text-2xl font-normal text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Register </a>
+    <div class="text-center mt-2">
+        <a id="loginButton" title="" class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 font-['Uber Move'] inline-flex  mr-3 px-8  py-3 text-2xl font-normal  text-white transition-all duration-200 bg-green-700 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Login </a>
+        <a id="registerButton" title="" class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110  duration-300 font-['Uber Move'] inline-flex  px-8  py-3 text-2xl font-normal text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Register </a>
     </div>
-    <img src="img/car.png" alt="" class="absolute bottom-0 right-2/4 w-3/6  z-0"" />
+    <img src="img/car.png" alt="" class="absolute top-100 bottom-0 right-2/4 w-3/6  z-0"" />
+</div>
+
+<div class="fade-in-element flex flex-row m-10">
+<div class="flex  bg-[#3837e3] w-1/3 h-80 rounded-2xl m-3">
+    <h1 class="font-['Josefin_Sans'] text-white p-5 text-6xl font-bold "> Search.</h1>
+    </div>
+    <div class="flex     bg-[#d2ffd5] w-1/3 h-80 rounded-2xl m-3">
+    <h1 class="font-['Josefin_Sans'] text-green-900 p-5 text-6xl font-bold "> Pick.</h1>
+    </div>
+
+    <div class="flex     bg-[#6f4bff] w-1/3 h-80 rounded-2xl m-3">
+    <h1 class="font-['Josefin_Sans'] text-white p-5 text-6xl font-bold " > Pay.</h1>
+    </div>
+    <div class="flex     bg-[#001942] w-1/3 h-80 rounded-2xl m-3">
+    <h1 class="font-['Josefin_Sans'] text-white p-5 text-6xl font-bold " > Go !</h1>
+    </div>
 </div>
 
 
