@@ -1,4 +1,7 @@
 
+        /////////////////////////////////
+        // Home Page Login and Signup
+        /////////////////////////////////
         // Get the popup and button elements
         const loginButtonHeader = document.getElementById('loginButtonHeader');
         const registerButtonHeader = document.getElementById('registerButtonHeader');
@@ -37,7 +40,8 @@
             }
         });
 
-
+        ///////////////////////////////
+        //Home Page Fade Effect
         window.addEventListener('scroll', function() {
             var elementsToFadeIn = document.querySelectorAll('.fade-in-element');
         
@@ -50,4 +54,8 @@
                 element.style.opacity = opacity;
             });
         });
+        
+
+
+
         

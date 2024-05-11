@@ -4,14 +4,14 @@ USE crs;
 
 CREATE TABLE `location`
 (
-    loc VARCHAR(255) PRIMARY KEY
+    location VARCHAR(255) PRIMARY KEY
 );
 
 CREATE TABLE branch
 (
     branch_name VARCHAR(255) PRIMARY KEY,
-    loc         VARCHAR(255),
-    FOREIGN KEY (loc) REFERENCES `location` (loc)
+    location         VARCHAR(255),
+    FOREIGN KEY (location) REFERENCES `location` (location)
 );
 
 CREATE TABLE car
@@ -23,11 +23,13 @@ CREATE TABLE car
     price          FLOAT        NOT NULL,
     color          VARCHAR(255) NOT NULL,
     power          INT          NOT NULL,
-    `automatic`    CHAR(1)      NOT NULL,
+    transmission VARCHAR(6)      NOT NULL,
     tank_capacity  FLOAT        NOT NULL,
-    loc            VARCHAR(255),
+    location            VARCHAR(255),
     img            TEXT         NOT NULL,
-    FOREIGN KEY (loc) REFERENCES `location` (loc)
+    branch_name    VARCHAR(255) NOT NULL,
+    FOREIGN KEY (branch_name) REFERENCES `branch` (branch_name),
+    FOREIGN KEY (location) REFERENCES `location` (location)
 );
 
 CREATE TABLE `user`
@@ -62,11 +64,3 @@ CREATE TABLE reservation
     PRIMARY KEY (plate_id, ssn)
 );
 
-CREATE TABLE car_status
-(
-    plate_id                  VARCHAR(255),
-    out_of_service_start_date date,
-    out_of_service_end_date   date,
-    PRIMARY KEY (plate_id, out_of_service_start_date),
-    FOREIGN KEY (plate_id) REFERENCES car (plate_id)
-);

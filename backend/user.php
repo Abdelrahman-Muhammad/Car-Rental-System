@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register-submit"])) {
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register-submit"])) {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        echo "Email or SSN or Phone already exists";
+        echo "Email or SSN already exists";
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -42,7 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login-submit"])) {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row["password"])) {
-            echo "Login successful";
+            $_SESSION['ssn'] = $row['ssn'];
+            $_SESSION['user'] = $row;
+            header("Location: ../dashboard.php");
+            exit;
         } else {
             echo "Incorrect password";
         }

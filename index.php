@@ -1,6 +1,11 @@
 <?php 
 include './backend/db_connection.php';
 include './backend/user.php';
+if (isset($_SESSION['ssn'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
 ?>
 <!doctype html>
 <html>
@@ -20,11 +25,11 @@ include './backend/user.php';
     <div class="flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
         <div class="flex-auto w-44 ">
             <a href="#" title="" class="flex justify-start">
-                <a href="#" title="" class="font-['Sora'] inline-flex px-8 text-2xl font-extrabold text-blue-800 transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Car Rental System </a>
+                <a href="index.php" title="" class="font-['Sora'] inline-flex px-8 text-3xl font-extrabold text-blue-800 transition-all duration-200 hover:text-indigo-700 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Car Rental System </a>
             </a>
         </div>
         <div class="flex-auto w-72 text-center">
-            <a href="#" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Home </a>
+            <a href="index.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Home </a>
             <a href="#" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Catalog </a>
             <a href=" #" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
         </div>
