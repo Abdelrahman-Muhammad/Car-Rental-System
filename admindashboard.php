@@ -9,7 +9,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['is_admin'] !== 'T') {
 }
 
 // Include the necessary files
-require_once "db_connection.php"; // Include your database connection file
+require_once "./backend/db_connection.php"; // Include your database connection file
 
 // Handle adding a new car if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_car_submit"])) {
