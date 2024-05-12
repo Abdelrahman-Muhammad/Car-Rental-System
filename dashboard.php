@@ -23,6 +23,7 @@ if (!isset($_SESSION['ssn'])) {
     <link href="https://fonts.googleapis.com/css2?family=Sora&family=Manrope&family=Josefin+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/uber-move-text" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/mona-sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -178,8 +179,7 @@ $branches = getDistinctValues($conn, 'branch', 'branch_name');
 
 
     <!-- Results !-->
-  <div class="flex-initial w-full pr-20">
-    <div id="results" class="grid grid-cols-3 gap-4">
+  <div id="results" class="flex-initial w-full pr-20">
     
 
 </div>
@@ -190,6 +190,7 @@ $branches = getDistinctValues($conn, 'branch', 'branch_name');
 
 
 
+<div class="full-page-background"></div>
 
 <script src="js/dashboard.js"></script>
 

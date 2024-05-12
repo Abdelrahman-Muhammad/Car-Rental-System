@@ -15,17 +15,17 @@ INSERT INTO branch VALUES ('Moscow', 'Russia');
 INSERT INTO branch VALUES ('St. Petersburg', 'Russia');
 
 
-INSERT INTO car VALUES ('H6HYU', 'BMW 3-Series G20', 2020, 'Manual', 200, 'blue', 140, 'Auto', 50, 'France', 'blueBMW.jpg','Paris');
-INSERT INTO car VALUES ('D7RKU', 'Hyundai i20', 2019, 'Manual', 280, 'blue', 140, 'Auto', 50, 'France', 'blueHyundai.jpg','Lyon');
-INSERT INTO car VALUES ('A3SKD', 'Kia Rio', 2018, 'Manual', 100, 'white', 140, 'Auto', 50, 'France', 'whiteKIA.jpg','Alexandria');
-INSERT INTO car VALUES ('C9ASD', 'Nissan Sunny', 2017, 'Manual', 250, 'grey', 140, 'Manual', 50, 'Egypt', 'greyNissan.jpg','Cairo');
-INSERT INTO car VALUES ('Z0FKS', 'Toyota Yaris', 2016, 'Manual', 150, 'grey', 140, 'Manual', 50, 'Egypt', 'greyToyota.jpg','Liverpool');
-INSERT INTO car VALUES ('Q1DKU', 'Skoda Octavia', 2017, 'Manual', 230, 'white', 140, 'Manual', 50, 'Egypt', 'whiteSkoda.jpg','Manchester');
-INSERT INTO car VALUES ('M9TBS', 'Fiat Tipo', 2018, 'Manual', 200, 'red', 140, 'Manual', 50, 'France', 'redFIAT.jpg','Moscow');
-INSERT INTO car VALUES ('L6SDK', 'Mercedes s6', 2019, 'Manual', 150, 'red', 140, 'Auto', 50, 'England', 'redMercedes.jpg','Moscow');
-INSERT INTO car VALUES ('S8VMS', 'Renault Megane', 2020, 'Manual', 250, 'yellow', 140, 'Auto', 50, 'England', 'yellowRenault.jpg','Moscow');
-INSERT INTO car VALUES ('X2LAM', 'Peugeot 508', 2021, 'Manual', 180, 'red', 140, 'Auto', 50, 'Russia', 'redPeugeot.jpg','Moscow');
-INSERT INTO car VALUES ('G4SLT', 'Seat Leon', 2017, 'Manual', 170, 'red', 140, 'Auto', 50, 'Russia', 'redSeat.jpg','Moscow');
+INSERT INTO car VALUES ('H6HYU', 'BMW 3-Series G20', 2020, 'Manual', 200, 'blue', 140, 'Auto', 50, 'blueBMW.jpg','Paris');
+INSERT INTO car VALUES ('D7RKU', 'Hyundai i20', 2019, 'Manual', 280, 'blue', 140, 'Auto', 50, 'blueHyundai.jpg','Lyon');
+INSERT INTO car VALUES ('A3SKD', 'Kia Rio', 2018, 'Manual', 100, 'white', 140, 'Auto', 50, 'whiteKIA.jpg','Alexandria');
+INSERT INTO car VALUES ('C9ASD', 'Nissan Sunny', 2017, 'Manual', 250, 'grey', 140, 'Manual', 50, 'greyNissan.jpg','Cairo');
+INSERT INTO car VALUES ('Z0FKS', 'Toyota Yaris', 2016, 'Manual', 150, 'grey', 140, 'Manual', 50, 'greyToyota.jpg','Liverpool');
+INSERT INTO car VALUES ('Q1DKU', 'Skoda Octavia', 2017, 'Manual', 230, 'white', 140, 'Manual', 50, 'whiteSkoda.jpg','Manchester');
+INSERT INTO car VALUES ('M9TBS', 'Fiat Tipo', 2018, 'Manual', 200, 'red', 140, 'Manual', 50, 'redFIAT.jpg','Moscow');
+INSERT INTO car VALUES ('L6SDK', 'Mercedes s6', 2019, 'Manual', 150, 'red', 140, 'Auto', 50, 'redMercedes.jpg','Moscow');
+INSERT INTO car VALUES ('S8VMS', 'Renault Megane', 2020, 'Manual', 250, 'yellow', 140, 'Auto', 50, 'yellowRenault.jpg','Moscow');
+INSERT INTO car VALUES ('X2LAM', 'Peugeot 508', 2021, 'Manual', 180, 'red', 140, 'Auto', 50, 'redPeugeot.jpg','Moscow');
+INSERT INTO car VALUES ('G4SLT', 'Seat Leon', 2017, 'Manual', 170, 'red', 140, 'Auto', 50, 'redSeat.jpg','Moscow');
 
 
 INSERT INTO user VALUES ('12551289579122', 'Admin', 'Admin', '01223674874', 'admin@gmail.com', '698d51a19d8a121ce581499d7b701668', 'M', '1996-09-05', 'Auto');
@@ -34,13 +34,13 @@ INSERT INTO user VALUES ('29673262853274', 'Sandra', 'Adel', '01248563857', 'san
 INSERT INTO user VALUES ('46634237494769', 'Amr', 'Mohamed', '01257673694', 'amr@gmail.com', '481c48991702d420efc19afb28c3f533', 'M', '2000-05-15', 'Manual');
 
 
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('C9ASD', '15176891141235', "2022-01-15", "Alexandria", "Cairo", "2022-02-10", "2022-02-11", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('Z0FKS', '15176891141235', "2022-01-16", "Alexandria", "Alexandria", "2022-02-05", "2022-02-06", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('Q1DKU', '15176891141235', "2022-01-17", "Cairo", "Alexandria", "2022-02-12", "2022-02-12", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('H6HYU', '29673262853274', "2022-01-18", "Lyon", "Paris", "2022-02-12", "2022-02-15", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('D7RKU', '29673262853274', "2022-01-19", "Paris", "Paris", "2022-02-16", "2022-02-16", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('A3SKD', '29673262853274', "2022-01-20", "Lyon", "Paris", "2022-02-18", "2022-02-20", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('M9TBS', '29673262853274', "2022-01-21", "Lyon", "Lyon", "2022-02-21", "2022-02-22", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('L6SDK', '46634237494769', "2022-01-22", "Liverpool", "Manchester", "2022-01-27", "2022-01-29", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('S8VMS', '46634237494769', "2022-01-23", "Manchester", "Liverpool", "2022-01-30", "2022-01-31", 'Manual');
-INSERT INTO reservation (plate_id, ssn, reservation_time, pickup_location, return_location, pickup_time, return_time, is_paid) VALUES ('X2LAM', '46634237494769', "2022-01-24", "St. Petersburg", "Moscow", "2022-03-28", "2022-03-29", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('C9ASD', '15176891141235', "2022-01-15", "2022-02-10", "2022-02-11", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('Z0FKS', '15176891141235', "2022-01-16", "2022-02-05", "2022-02-06", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('Q1DKU', '15176891141235', "2022-01-17", "2022-02-12", "2022-02-12", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('H6HYU', '29673262853274', "2022-01-18", "2022-02-12", "2022-02-15", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('D7RKU', '29673262853274', "2022-01-19", "2022-02-16", "2022-02-16", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('A3SKD', '29673262853274', "2022-01-20", "2022-02-18", "2022-02-20", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('M9TBS', '29673262853274', "2022-01-21", "2022-02-21", "2022-02-22", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('L6SDK', '46634237494769', "2022-01-22", "2022-01-27", "2022-01-29", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('S8VMS', '46634237494769', "2022-01-23", "2022-01-30", "2022-01-31", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('X2LAM', '46634237494769', "2022-01-24", "2022-03-28", "2022-03-29", 'Manual');
