@@ -34,13 +34,13 @@ INSERT INTO user VALUES ('29673262853274', 'Sandra', 'Adel', '01248563857', 'san
 INSERT INTO user VALUES ('46634237494769', 'Amr', 'Mohamed', '01257673694', 'amr@gmail.com', '481c48991702d420efc19afb28c3f533', 'M', '2000-05-15', 'F');
 
 
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('C9ASD', '15176891141235', "2022-01-15", "2022-02-10", "2022-02-11", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('Z0FKS', '15176891141235', "2022-01-16", "2022-02-05", "2022-02-06", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('Q1DKU', '15176891141235', "2022-01-17", "2022-02-12", "2022-02-12", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('H6HYU', '29673262853274', "2022-01-18", "2022-02-12", "2022-02-15", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('D7RKU', '29673262853274', "2022-01-19", "2022-02-16", "2022-02-16", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('A3SKD', '29673262853274', "2022-01-20", "2022-02-18", "2022-02-20", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('M9TBS', '29673262853274', "2022-01-21", "2022-02-21", "2022-02-22", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('L6SDK', '46634237494769', "2022-01-22", "2022-01-27", "2022-01-29", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('S8VMS', '46634237494769', "2022-01-23", "2022-01-30", "2022-01-31", 'Manual');
-INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('X2LAM', '46634237494769', "2022-01-24", "2022-03-28", "2022-03-29", 'Manual');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('C9ASD', '15176891141235', "2022-01-15", "2022-02-10", "2022-02-11", 'T');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('Z0FKS', '15176891141235', "2022-01-16", "2022-02-05", "2022-02-06", 'T');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('Q1DKU', '15176891141235', "2022-01-17", "2022-02-12", "2022-02-12", 'T');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('H6HYU', '29673262853274', "2022-01-18", "2022-02-12", "2022-02-15", 'F');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('D7RKU', '29673262853274', "2022-01-19", "2022-02-16", "2022-02-16", 'F');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('A3SKD', '29673262853274', "2022-01-20", "2022-02-18", "2022-02-20", 'T');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('M9TBS', '29673262853274', "2022-01-21", "2022-02-21", "2022-02-22", 'F');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('L6SDK', '46634237494769', "2022-01-22", "2022-01-27", "2022-01-29", 'T');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('S8VMS', '46634237494769', "2022-01-23", "2022-01-30", "2022-01-31", 'F');
+INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('X2LAM', '46634237494769', "2022-01-24", "2022-03-28", "2022-03-29", 'T');

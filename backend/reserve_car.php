@@ -8,7 +8,7 @@ if (isset($_POST['carId']) && isset($_SESSION['ssn'])) {
   $ssn = $_SESSION['ssn'];
   $pickupTime = $_POST['pickup_time'];
   $returnTime = $_POST['return_time'];
-  $isPaid = isset($_POST['is_paid'])? 'Y' : 'N';
+  $isPaid = isset($_POST['is_paid'])? 'T' : 'F';
   $total_price = $_POST['total_price'];
 
   $query = "SELECT * FROM reservation 

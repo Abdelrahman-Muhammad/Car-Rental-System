@@ -66,13 +66,13 @@ $query.= " ORDER BY model ASC";
 // Execute the SQL query
 $result = $conn->query($query);
 $num_results = $result->num_rows;
-echo '<h1 class="mt-10 font-bold font-[\'Sora\'] mb-4 text-4xl text-gray-700">' . $num_results . ' results</h1>';
+echo '<h1 class="mt-2 font-bold font-[\'Sora\'] mb-4 text-5xl text-gray-700">' . $num_results . ' results</h1>';
 
 echo'<div  class="grid grid-cols-3 gap-4">';
 // Output the results
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="p-2 bg-white rounded-md shadow-md flex flex-col hover:bg-slate-100 hover:scale-125" data-car-id="'. $row['car_id']. '" onclick="openPopup(\'' . $row['car_id'] . '\', \'' . $row['model'] . '\', \'' . $row['year'] . '\', \'' . $row['color'] . '\', \'' . $row['transmission'] . '\', \'' . $row['price'] . '\', \'' . $row['power'] . '\', \'' . $row['location'] . '\', \'' . $row['branch_name'] . '\')">';
+        echo '<div class="p-2 bg-white rounded-md shadow-md flex flex-col hover:bg-slate-100 hover:scale-125 duration-100 ease-in " data-car-id="'. $row['car_id']. '" onclick="openPopup(\'' . $row['car_id'] . '\', \'' . $row['model'] . '\', \'' . $row['year'] . '\', \'' . $row['color'] . '\', \'' . $row['transmission'] . '\', \'' . $row['price'] . '\', \'' . $row['power'] . '\', \'' . $row['location'] . '\', \'' . $row['branch_name'] . '\')">';
         echo '<img class="rounded-lg shadow-md" src="img/'. $row['img']. '" alt="'. $row['model']. '" class="w-full h-48 object-cover mb-4">';
         echo '<div class="flex-grow">'; // Start of div for text
         echo '</div>'; // End of div for text

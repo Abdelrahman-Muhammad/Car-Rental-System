@@ -53,7 +53,7 @@ if (!isset($_SESSION['ssn'])) {
         <div class="flex-auto w-10  text-left text-xl bg-gray-100 rounded-md p-3 font-bold ">
         <p>Welcome , <?php echo $user_fname; ?></p>
         </div>
-        <a class="flex text-xl bg-red-700 text-white rounded-md p-3 font-bold" href="logout.php">Log Out</a>
+        <a class="flex text-xl bg-red-600 text-white rounded-md p-3 font-bold" href="logout.php">Log Out</a>
         </div>
 
         </div>
@@ -62,6 +62,46 @@ if (!isset($_SESSION['ssn'])) {
 
 
 <body>
+
+<?php
+$ssn=$_SESSION['ssn'];
+$total_reservations_query = "SELECT COALESCE(COUNT(*), 0) as total_reservations FROM reservation WHERE ssn = '$ssn'";
+$total_reservations_result = $conn->query($total_reservations_query);
+if (mysqli_num_rows($total_reservations_result) > 0) {
+    while ($row = mysqli_fetch_assoc($total_reservations_result)) {
+        $total_reservations = $row['total_reservations'];
+    }
+} else {
+    $total_reservations = 0;
+}
+
+$total_payments_query = "SELECT COALESCE(SUM(total_price), 0) as total_payments FROM reservation WHERE ssn = '$ssn' AND is_paid = 'F'";
+$total_payments_result = mysqli_query($conn, $total_payments_query);
+
+if (mysqli_num_rows($total_payments_result) > 0) {
+    while ($row = mysqli_fetch_assoc($total_payments_result)) {
+        $total_payments = $row['total_payments'];
+    }
+} else {
+    $total_payments = 0;
+}
+
+
+?>
+
+<div class="flex flex-row justify-center">
+
+    <div class="flex flex-col bg-[#d2ffd5] w-1/3 h-80 rounded-2xl m-3 hover:scale-110 duration-200 ease-in">
+        <h1 class="font-['Josefin_Sans'] text-green-900 p-5 text-6xl font-bold "> Your Trips</h1>
+        <p class="font-['Josefin_Sans'] text-green-900 text-center p-5 text-8xl font-bold"><?php echo $total_reservations; ?></p>
+    </div>
+
+    <div class="flex flex-col bg-[#ff2c2c] w-1/3 h-80 rounded-2xl m-3 hover:scale-110 duration-200 ease-in">
+        <h1 class="font-['Josefin_Sans'] text-white p-5 text-6xl font-bold "> Debt</h1>
+        <p class="font-['Josefin_Sans'] text-white text-center p-5 text-8xl font-bold"><?php echo $total_payments; ?></p>
+    </div>
+
+</div>
 
     <!-- Search Filters -->
     <?php
@@ -89,10 +129,10 @@ $branches = getDistinctValues($conn, 'branch', 'branch_name');
 
 ?>
 
-    <div class="flex p-10">
+    <div class="flex border-2 shadow-2xl rounded-3xl p-10">
   <div class="flex-none w-96 ">
   <form data-ajax-url="backend/filter.php" class="" method="POST">
-  <div class="flex-col mr-10 font-semibold shadow-xl p-10 rounded-3xl">
+  <div class="flex-col mr-10 font-semibold border-2 shadow-2xl p-10 rounded-3xl">
                 <div class="font-['Sora'] text-4xl font-bold text-gray-700"><h1>Search Filters</h1></div>
                 <div class="mt-4">
                     <label for="modelFilter" class="font-bold">Car Model:</label>

@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
       </button>
       <h2 class="text-2xl font-bold pb-3">Reserve Car ${carId}</h2>
       <div class="grid grid-cols-1 gap-4">
-        <div class="bg-white shadow-md rounded p-4">
+        <div class="bg-[#d2ffd5] text-green-900 shadow-md rounded p-4">
           <h3 class="text-lg font-bold">Car Information</h3>
           <p>Car ID: ${carId}</p>
           <p>Model: ${model}</p>
@@ -52,33 +52,33 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="bg-white shadow-md rounded p-4">
           <h3 class="text-lg font-bold">Reserve Car</h3>
           <form id="reservationForm">
-            <input type="hidden" name="carId" value="${carId}">
-            <input type="hidden" name="total_price" id="totalPriceInput">
-            <label class="block">
-              <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                Pickup Time
-              </span>
-              <input type="date" name="pickup_time" id="pickupTime" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" />
-            </label>
-            <label class="block">
-              <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                Return Time
-              </span>
-              <input type="date" name="return_time" id="returnTime" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" />
-            </label>
-            <label class="block">
-              <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                Is Paid
-              </span>
-              <input type="checkbox" name="is_paid" id="isPaid" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full h-12 rounded-md accent-green-500" />
-            </label>
-            <div class="items-right text-right">
-              <button type="submit" class="mt-2 bg-green-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Reserve Car
-              </button>
-              <p id="totalPrice"></p>
-            </div>
-          </form>
+          <input type="hidden" name="carId" value="${carId}" >
+          <input type="hidden" name="total_price" id="totalPriceInput" >
+          <label class="block">
+            <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+              Pickup Time
+            </span>
+            <input type="date" name="pickup_time" id="pickupTime" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" required>
+          </label>
+          <label class="block">
+            <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+              Return Time
+            </span>
+            <input type="date" name="return_time" id="returnTime" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" required>
+          </label>
+          <label class="block">
+            <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+              Is Paid
+            </span>
+            <input type="checkbox" name="is_paid" id="isPaid" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full h-12 rounded-md accent-green-500">
+          </label>
+          <div class="items-right text-right">
+            <button type="submit" class="mt-2 bg-green-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Reserve Car
+            </button>
+            <p id="totalPrice"></p>
+          </div>
+        </form>
         </div>
       </div>
     </div>
@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
   popup.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.2)";
   
   const form = popup.querySelector("form");
+  
   
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -123,6 +124,12 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   });
   
+  const closeButton = popup.querySelector("button");
+  closeButton.addEventListener("click", () => {
+    popup.remove();
+    
+})
+
   const pickupTimeInput = popup.querySelector("#pickupTime");
   const returnTimeInput = popup.querySelector("#returnTime");
   const totalPriceDisplay = popup.querySelector("#totalPrice");
@@ -144,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
   pickupTimeInput.addEventListener("change", updateTotalPrice);
   returnTimeInput.addEventListener("change", updateTotalPrice);
   
-  
+
   
   
   };
