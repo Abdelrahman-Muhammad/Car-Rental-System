@@ -28,10 +28,10 @@ INSERT INTO car VALUES ('X2LAM', 'Peugeot 508', 2021, 'Manual', 180, 'red', 140,
 INSERT INTO car VALUES ('G4SLT', 'Seat Leon', 2017, 'Manual', 170, 'red', 140, 'Auto', 50, 'redSeat.jpg','Moscow');
 
 
-INSERT INTO user VALUES ('12551289579122', 'Admin', 'Admin', '01223674874', 'admin@gmail.com', '698d51a19d8a121ce581499d7b701668', 'M', '1996-09-05', 'Auto');
-INSERT INTO user VALUES ('15176891141235', 'Fady', 'Sameh', '01233547384', 'fady@gmail.com', '30dcd0487df76c49254f6644d08a1c01', 'M', '2000-04-12', 'Manual');
-INSERT INTO user VALUES ('29673262853274', 'Sandra', 'Adel', '01248563857', 'sandra@gmail.com', '6df02b541a67198aff344875085f2336', 'Manual', '1996-11-03', 'Manual');
-INSERT INTO user VALUES ('46634237494769', 'Amr', 'Mohamed', '01257673694', 'amr@gmail.com', '481c48991702d420efc19afb28c3f533', 'M', '2000-05-15', 'Manual');
+INSERT INTO user VALUES ('12551289579122', 'Admin', 'Admin', '01223674874', 'admin@gmail.com', '698d51a19d8a121ce581499d7b701668', 'M', '1996-09-05', 'T');
+INSERT INTO user VALUES ('15176891141235', 'Fady', 'Sameh', '01233547384', 'fady@gmail.com', '30dcd0487df76c49254f6644d08a1c01', 'M', '2000-04-12', 'F');
+INSERT INTO user VALUES ('29673262853274', 'Sandra', 'Adel', '01248563857', 'sandra@gmail.com', '6df02b541a67198aff344875085f2336', 'Manual', '1996-11-03', 'F');
+INSERT INTO user VALUES ('46634237494769', 'Amr', 'Mohamed', '01257673694', 'amr@gmail.com', '481c48991702d420efc19afb28c3f533', 'M', '2000-05-15', 'F');
 
 
 INSERT INTO reservation (car_id, ssn, reservation_time,  pickup_time, return_time, is_paid) VALUES ('C9ASD', '15176891141235', "2022-01-15", "2022-02-10", "2022-02-11", 'Manual');

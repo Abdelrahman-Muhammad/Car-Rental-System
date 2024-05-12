@@ -23,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register-submit"])) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO `user` (ssn,fname,lname,phone,email,password,sex,birthdate,is_admin) VALUES
-        ('$ssn','$fname','$lname','$mobile','$email','$hashed_password','$gender','$bdate','$is_admin')";;
+        ('$ssn','$fname','$lname','$mobile','$email','$hashed_password','$gender','$bdate','$is_admin')";
+        ;
         if ($conn->query($sql) === TRUE) {
             echo "Registration successful";
         } else {
@@ -45,8 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login-submit"])) {
         if (password_verify($password, $row["password"])) {
             $_SESSION['ssn'] = $row['ssn'];
             $_SESSION['user'] = $row;
-            header("Location: ../dashboard.php");
-            exit;
+            if (isset($_SESSION['user']) || $_SESSION['user']['is_admin'] == 'T') {
+                header("Location: ../admindashboard.php");
+            } else {
+                header("Location: ../dashboard.php");
+                exit;
+            }
+
         } else {
             echo "Incorrect password";
         }
