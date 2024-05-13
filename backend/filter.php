@@ -14,7 +14,7 @@ $location = isset($_POST['locationFilter']) ? $_POST['locationFilter'] : "";
 $branch = isset($_POST['branchFilter']) ? $_POST['branchFilter'] : "";
 
 // Build the SQL query based on the search filter values
-$query = "SELECT * FROM car NATURAL JOIN branch WHERE 1=1";
+$query = "SELECT * FROM car NATURAL JOIN branch WHERE out_of_service = 'F'";
 
 if ($model!= "") {
     $query.= " AND model = '$model'";
@@ -72,7 +72,7 @@ echo'<div  class="grid grid-cols-3 gap-4">';
 // Output the results
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="p-2 bg-white rounded-md shadow-md flex flex-col hover:bg-slate-100 hover:scale-125 duration-100 ease-in " data-car-id="'. $row['car_id']. '" onclick="openPopup(\'' . $row['car_id'] . '\', \'' . $row['model'] . '\', \'' . $row['year'] . '\', \'' . $row['color'] . '\', \'' . $row['transmission'] . '\', \'' . $row['price'] . '\', \'' . $row['power'] . '\', \'' . $row['location'] . '\', \'' . $row['branch_name'] . '\')">';
+        echo '<div style="cursor: pointer;" class="p-2 bg-white rounded-md shadow-md flex flex-col hover:bg-slate-100 hover:scale-125 duration-100 ease-in " data-car-id="'. $row['car_id']. '" onclick="openPopup(\'' . $row['car_id'] . '\', \'' . $row['model'] . '\', \'' . $row['year'] . '\', \'' . $row['color'] . '\', \'' . $row['transmission'] . '\', \'' . $row['price'] . '\', \'' . $row['power'] . '\', \'' . $row['location'] . '\', \'' . $row['branch_name'] . '\')">';
         echo '<img class="rounded-lg shadow-md" src="img/'. $row['img']. '" alt="'. $row['model']. '" class="w-full h-48 object-cover mb-4">';
         echo '<div class="flex-grow">'; // Start of div for text
         echo '</div>'; // End of div for text

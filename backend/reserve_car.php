@@ -38,33 +38,14 @@ if (isset($_POST['carId']) && isset($_SESSION['ssn'])) {
     echo "Error: ". $conn->error;
   } else {
 
-// Check if the car is not out of service
-$checkQuery = "SELECT out_of_service FROM car WHERE car_id = '$carId'";
-$result = $conn->query($checkQuery);
-
-if ($result) {
-    $carData = $result->fetch_assoc();
-    if ($carData['out_of_service'] == 'T') {
-        echo "Error: Car is currently out of service and cannot be reserved.";
+    // Insert a new reservation into the database
+    $query = "INSERT INTO reservation (car_id, ssn, pickup_time, return_time, is_paid, reservation_time,total_price) 
+               VALUES ('$carId', '$ssn', '$pickupTime', '$returnTime', '$isPaid', NOW(),'$total_price')";
+    if (!$conn->query($query)) {
+      echo "Error: ". $conn->error;
     } else {
-        // Insert reservation into the database
-        $query = "INSERT INTO reservation (car_id, ssn, pickup_time, return_time, is_paid, reservation_time, total_price) 
-                   VALUES ('$carId', '$ssn', '$pickupTime', '$returnTime', '$isPaid', NOW(), '$total_price')";
-        
-        if ($conn->query($query)) {
-            // Update out_of_service status to 'T' after successful reservation
-            $updateQuery = "UPDATE car SET out_of_service = 'T' WHERE car_id = '$carId'";
-            $conn->query($updateQuery);
-            
-            echo "Car reserved successfully!";
-        } else {
-            echo "Error: ". $conn->error;
-        }
+      echo "Car reserved successfully!";
     }
-} else {
-    echo "Error: ". $conn->error;
-}
-
   }
 } else {
 

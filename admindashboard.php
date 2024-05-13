@@ -36,7 +36,7 @@ if (!isset($_SESSION['ssn'])) {
         </div>
         <div class="flex-auto ">
             <a href="admindashboard.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Home </a>
-            <a href="about.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
+            <a href="About.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
         </div>
         <div class="flex-auto mr-10 text-right bg-gray-100 rounded-md">
         <h1></h1>
@@ -77,7 +77,7 @@ function getDistinctValues($conn, $tableName, $columnName) {
     }
     return $values;
 }
-
+$ssn_distinct = getDistinctValues($conn, 'user', 'ssn');
 $car_id = getDistinctValues($conn, 'car', 'car_id');
 $branches = getDistinctValues($conn, 'branch', 'branch_name');
 $locations = getDistinctValues($conn, 'location', 'location');
@@ -86,24 +86,24 @@ $locations = getDistinctValues($conn, 'location', 'location');
 
 <!-- Dashboard Header !-->
 <div class="flex flex-row m-5">
-<div style="cursor: pointer;" onclick="showViewReservationsDiv()" class="flex     bg-[#ffbd66] w-1/3 h-80 rounded-2xl m-3 relative">
+<div style="cursor: pointer;" onclick="showViewReservationsDiv()" class="flex hover:scale-110 ease-in duration-150    bg-[#ffbd66] w-1/3 h-80 rounded-2xl m-3 relative">
     <a  class="font-['Josefin_Sans'] text-[#b0640e] p-8 text-5xl font-bold " > View Reservations</a>
     <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#ffbd66] text-4xl bg-[#b0640e] rounded-full p-3" aria-hidden="true"></i>
   </div>
-  <div style="cursor: pointer;" onclick="showAddCarDiv()" class="flex  bg-[#d2ffd5] w-1/3 h-80 rounded-2xl m-3 relative">
+  <div style="cursor: pointer;" onclick="showAddCarDiv()" class="flex hover:scale-110 ease-in duration-150 bg-[#d2ffd5] w-1/3 h-80 rounded-2xl m-3 relative">
     <a class="font-['Josefin_Sans'] text-green-900 p-5 text-5xl font-bold "> Add Car</a>
     <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-green-900 text-4xl bg-[#b4eec0] rounded-full p-3" aria-hidden="true"></i>
   </div>
-  <div style="cursor: pointer;" onclick="showEditCarDiv()" class="flex     bg-[#3837e3] w-1/3 h-80 rounded-2xl m-3 relative">
+  <div style="cursor: pointer;" onclick="showEditCarDiv()" class="flex  hover:scale-110 ease-in duration-150   bg-[#3837e3] w-1/3 h-80 rounded-2xl m-3 relative">
     <a class="font-['Josefin_Sans'] text-white p-5 text-5xl font-bold "> Edit Car</a>
     <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#3837e3] text-4xl bg-[#18189b] rounded-full p-3" aria-hidden="true"></i>
   </div>
-  <div style="cursor: pointer;" onclick="showAddAdminDiv()" class="flex     bg-[#5fdfff] w-1/3 h-80 rounded-2xl m-3 relative">
+  <div style="cursor: pointer;" onclick="showAddAdminDiv()" class="flex  hover:scale-110 ease-in duration-150   bg-[#5fdfff] w-1/3 h-80 rounded-2xl m-3 relative">
     <a class="font-['Josefin_Sans'] text-[#0d3944] p-5 text-5xl font-bold " > Add Admin</a>
     <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#5fdfff] text-4xl bg-[#0a6176] rounded-full p-3" aria-hidden="true"></i>
   </div>
   <div class="flex flex-col m-3">
-  <div style="cursor: pointer; position: relative;" onclick="showaddLocationAndBranchDiv()" class="h-1/2 bg-[#de265d] rounded-2xl mb-3 relative flex justify-between items-end">
+  <div style="cursor: pointer; position: relative;" onclick="showaddLocationAndBranchDiv()" class="hover:scale-110 ease-in duration-150 h-1/2 bg-[#de265d] rounded-2xl mb-3 relative flex justify-between items-end">
     <a class="font-['Josefin_Sans'] text-white p-5 text-3xl font-bold">Add Location</a>
     <i class="fa fa-arrow-circle-right text-[#de265d] text-3xl bg-[#7a0f2f] rounded-full p-3 mb-10 mr-5" aria-hidden="true" ></i>
 </div>
@@ -111,7 +111,7 @@ $locations = getDistinctValues($conn, 'location', 'location');
 
 
 
-<div style="cursor: pointer; position: relative;" onclick="showReportsDiv()" class="h-1/2 bg-[#650a5f] rounded-2xl relative flex justify-between items-end">
+<div style="cursor: pointer; position: relative;" onclick="showReportsDiv()" class="hover:scale-110 ease-in duration-150 h-1/2 bg-[#650a5f] rounded-2xl relative flex justify-between items-end">
     <a class="font-['Josefin_Sans'] text-white p-5 text-3xl font-bold">Reports</a>
     <i class="fa fa-arrow-circle-right text-[#650a5f] text-3xl bg-[#360533] rounded-full p-3 mb-10 mr-5" aria-hidden="true" ></i>
 </div>
@@ -440,7 +440,7 @@ $locations = getDistinctValues($conn, 'location', 'location');
 
 
 
-<div id="viewReservationsDiv" class=" rounded-2xl shadow-2xl bg-white p-8 w-11/12 mx-auto">
+<div id="ReservationsDiv" class=" rounded-2xl shadow-2xl bg-white p-8 w-11/12 mx-auto">
 <div class="flex items-center">
   <div class="mr-4">
     <h2 class="block mt-2 font-bold font-['Sora'] mb-4 text-4xl text-gray-700">View Reservations</h2>
@@ -542,6 +542,260 @@ $locations = getDistinctValues($conn, 'location', 'location');
 
 
 <!-- View Reservations END !-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Reports !-->
+
+
+
+<div id="ReportsDiv" class="hidden rounded-2xl shadow-2xl bg-white p-8 w-11/12 mx-auto">
+<div class="flex items-center">
+  <div class="mr-4">
+    <h2 class="block mt-2 font-bold font-['Sora'] mb-4 text-4xl leading-tight border-violet-700 border-b-8 text-gray-700">Reports</h2>
+  </div>
+  </div>
+
+
+
+  <!--General Report 1 !-->
+
+
+<div class="mr-4">
+    <h2 class="block mt-2 font-bold font-sora mb-4 text-2xl text-gray-700 leading-tight border-b-2 border-gray-300 pb-2">Reservation Report</h2>
+    <div class="container mx-auto p-4">
+        <form id="report3Form" class="mb-4">
+            <div class="flex mb-2">
+                <div class="mr-4">
+                    <label for="report_type" class="font-bold">Select Report Type:</label>
+                    <select id="report_type" name="report_type" class="border border-gray-300 rounded-md px-3 py-2">
+                        <option value="customer">Reservations of Specific Customer</option>
+                        <option value="period_all">All Reservations within Specific Period</option>
+                        <option value="period_car">Reservations of Any Car within Specific Period</option>
+                    </select>
+                </div>
+                <div class="mr-4" id="3customer_ssn">
+                    <label for="customer_ssn" class="font-bold">Select Customer SSN:</label>
+                    <select  name="customer_ssn" class="border border-gray-300 rounded-md px-3 py-2">
+                        <option value="">Select SSN</option>
+                        <?php foreach ($ssn_distinct as $ssn) : ?>
+                            <option value="<?php echo $ssn; ?>"><?php echo $ssn; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="flex mb-2" >
+                <div class="mr-4" id="3start_date">
+                    <label for="start_date" class="font-bold">Start Date:</label>
+                    <input type="date" id="start_date" name="start_date" class="border border-gray-300 rounded-md px-3 py-2">
+                </div>
+                <div id="3end_date">
+                    <label for="end_date" class="font-bold">End Date:</label>
+                    <input type="date" id="end_date" name="end_date" class="border border-gray-300 rounded-md px-3 py-2 mr-5">
+                </div>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Generate Report</button>
+            </div>
+        </form>
+
+        <div id="report3Result"></div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('report3Form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var formData = new FormData(this); // Get form data
+        var xhr = new XMLHttpRequest(); // Create AJAX request object
+
+        // Define AJAX request parameters
+        xhr.open('POST', './backend/generalreport.php', true);
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request was successful, update report result div
+                document.getElementById('report3Result').innerHTML = xhr.responseText;
+            } else {
+                // Request failed, display error message
+                document.getElementById('report3Result').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+            }
+        };
+
+        xhr.onerror = function() {
+            // Request failed, display error message
+            document.getElementById('report3Result').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+        };
+
+        // Send AJAX request with form data
+        xhr.send(formData);
+    });
+
+    function toggleInputs(reportType) {
+        // Get references to input elements
+        var customerSSNInput = document.getElementById('3customer_ssn');
+        var startDateInput = document.getElementById('3start_date');
+        var endDateInput = document.getElementById('3end_date');
+
+        // Hide all inputs initially
+        customerSSNInput.style.display = 'none';
+        startDateInput.style.display = 'none';
+        endDateInput.style.display = 'none';
+
+        // Show inputs based on the selected report type
+        if (reportType === 'customer') {
+            customerSSNInput.style.display = 'block';
+        } else if (reportType === 'period_all' || reportType === 'period_car') {
+            startDateInput.style.display = 'block';
+            endDateInput.style.display = 'block';
+        }
+    }
+
+    // Add event listener to the report type select element
+    document.getElementById('report_type').addEventListener('change', function() {
+        // Get the selected report type
+        var reportType = this.value;
+        
+        // Call the toggleInputs function with the selected report type
+        toggleInputs(reportType);
+    });
+
+    // Initially call the toggleInputs function with the default selected report type
+    toggleInputs(document.getElementById('report_type').value);
+</script>
+
+  <!--General Report 1 END !-->
+
+  <!--report 2 !-->
+
+  <div class="mr-4">
+  <h2 class="block mt-2 font-bold font-sora mb-4 text-2xl text-gray-700 leading-tight border-b-2 border-gray-300 pb-2">Daily payments within specific period.</h2>
+  <div class="container mx-auto p-4">
+    <form id="reportForm" class="mb-4">
+        <div class="flex mb-2">
+            <div class="mr-4">
+                <label for="start_date" class="font-bold">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" class="border border-gray-300 rounded-md px-3 py-2">
+            </div>
+            <div>
+                <label for="end_date" class="font-bold">End Date:</label>
+                <input type="date" id="end_date" name="end_date" class="border border-gray-300 rounded-md px-3 py-2 mr-5">
+            </div>
+            <button type="submit" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Generate Report</button>
+
+        </div>
+    </form>
+
+    <div id="reportResult"></div>
+</div>
+
+<script>
+    document.getElementById('reportForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var formData = new FormData(this); // Get form data
+        var xhr = new XMLHttpRequest(); // Create AJAX request object
+
+        // Define AJAX request parameters
+        xhr.open('POST', './backend/paymentreport.php', true);
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request was successful, update report result div
+                document.getElementById('reportResult').innerHTML = xhr.responseText;
+            } else {
+                // Request failed, display error message
+                document.getElementById('reportResult').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+            }
+        };
+
+        xhr.onerror = function() {
+            // Request failed, display error message
+            document.getElementById('reportResult').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+        };
+
+        // Send AJAX request with form data
+        xhr.send(formData);
+    });
+</script>
+
+</div>
+<!-- Report 3 !-->
+
+<div class="mr-4">
+    <h2 class="block mt-2 font-bold font-sora mb-4 text-2xl text-gray-700 leading-tight border-b-2 border-gray-300 pb-2">All Reservations of Specific Customer</h2>
+    <div class="container mx-auto p-4">
+        <form id="report2Form" class="mb-4">
+            <div class="flex mb-2">
+                <div class="mr-4">
+                    <label for="customer_ssn" class="font-bold">Select Customer SSN:</label>
+                    <select id="customer_ssn" name="customer_ssn" class="border border-gray-300 rounded-md px-3 py-2">
+                        <option value="">Select SSN</option>
+                        <?php foreach ($ssn_distinct as $ssn) : ?>
+                            <option value="<?php echo $ssn; ?>"><?php echo $ssn; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Get Reservations</button>
+            </div>
+        </form>
+
+        <div id="report2Result">
+            <!-- Reservations table will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('report2Form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var formData = new FormData(this); // Get form data
+        var xhr = new XMLHttpRequest(); // Create AJAX request object
+
+        // Define AJAX request parameters
+        xhr.open('POST', './backend/customerreport.php', true);
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request was successful, update report result div
+                document.getElementById('report2Result').innerHTML = xhr.responseText;
+            } else {
+                // Request failed, display error message
+                document.getElementById('report2Result').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+            }
+        };
+
+        xhr.onerror = function() {
+            // Request failed, display error message
+            document.getElementById('report2Result').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+        };
+
+        // Send AJAX request with form data
+        xhr.send(formData);
+    });
+</script>
+
+</div>
+
+
+
+
+<!-- Report 3 END!-->
+
+
+
+
+
+
+
+
+<!-- Reports END !-->
+
 
 
 
