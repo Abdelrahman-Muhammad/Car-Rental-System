@@ -173,6 +173,49 @@ if (isset($_SESSION['ssn'])) {
     </div>
 </div>
 
+
+<!-- toast !-->
+<div id="toast" class="fixed bottom-0 left-0 mb-4 ml-4 p-4 rounded-md text-white">
+    <!-- Toast message content will be displayed here -->
+</div>
+
+<?php if(isset($_SESSION['registration_status']) || isset($_SESSION['login_status'])): ?>
+    <script>
+        <?php if(isset($_SESSION['registration_status'])): ?>
+            <?php if($_SESSION['registration_status'] === 'success'): ?>
+                showToast('Registration successful', 'bg-green-500');
+            <?php elseif($_SESSION['registration_status'] === 'failed'): ?>
+                showToast('Registration failed: Email or SSN already exists', 'bg-red-500');
+            <?php else: ?>
+                showToast('Registration failed: Error occurred', 'bg-red-500');
+            <?php endif; ?>
+            <?php unset($_SESSION['registration_status']); ?>
+        <?php endif; ?>
+
+        <?php if(isset($_SESSION['login_status'])): ?>
+            <?php if($_SESSION['login_status'] === 'success'): ?>
+                showToast('Login successful', 'bg-green-500');
+            <?php elseif($_SESSION['login_status'] === 'incorrect_password'): ?>
+                showToast('Login failed: Incorrect password', 'bg-red-500');
+            <?php else: ?>
+                showToast('Login failed: User not found', 'bg-red-500');
+            <?php endif; ?>
+            <?php unset($_SESSION['login_status']); ?>
+        <?php endif; ?>
+
+        function showToast(message, bgColor) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.remove('hidden');
+            toast.classList.add(bgColor);
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove(bgColor);
+            }, 3000); // Hide toast after 3 seconds
+        }
+    </script>
+<?php endif; ?>
+
 <div class="full-page-background"></div>
 <script src="js/script.js"></script>
 </body>
