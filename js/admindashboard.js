@@ -36,6 +36,3 @@ function showViewReservationsDiv() {
     hideAllDivs();
     document.getElementById("viewReservationsDiv").classList.remove("hidden");
 }
-
-
-
