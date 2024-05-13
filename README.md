@@ -44,5 +44,4 @@ Users can access their reservation history, affording them the opportunity to re
 The All Reservations feature presents users with a comprehensive repository of all reservations made within the system, empowering them with enhanced planning capabilities and facilitating seamless rental experiences.
 
 ## ERD Diagram
-![ERD Diagram]((https://github.com/Abdelrahman-Muhammad/Car-Rental-System/blob/main/ERD%20and%20report/Blank%20diagram%20(3).png))
-
+![ERD Diagram](https://github.com/Abdelrahman-Muhammad/Car-Rental-System/blob/main/ERD%20and%20report/Blank%20diagram%20(3).png)
