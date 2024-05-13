@@ -45,6 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login-submit"])) {
         if (password_verify($password, $row["password"])) {
             $_SESSION['ssn'] = $row['ssn'];
             $_SESSION['user'] = $row;
+            if($_SESSION['user']['is_admin']=='T')
+            {
+                header("Location: ../admindashboard.php");
+                exit;
+            }
             header("Location: ../dashboard.php");
             exit;
         } else {
