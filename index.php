@@ -60,8 +60,8 @@ if (isset($_SESSION['ssn'])) {
 </div>
 
 <div class="fade-in-element flex flex-row m-10">
-<div class="flex  bg-[#3837e3] w-1/3 h-80 rounded-2xl m-3">
-    <h1 class="font-['Josefin_Sans'] text-white p-5 text-6xl font-bold "> Search.</h1>
+<div class="flex  bg-[#3837e3] w-1/3 h-80 rounded-2xl m-3 ">
+    <h1 class="font-['Josefin_Sans'] text-white p-5 text-6xl font-bold   "> Search.</h1>
     </div>
     <div class="flex     bg-[#d2ffd5] w-1/3 h-80 rounded-2xl m-3">
     <h1 class="font-['Josefin_Sans'] text-green-900 p-5 text-6xl font-bold "> Pick.</h1>
@@ -81,20 +81,25 @@ if (isset($_SESSION['ssn'])) {
   <div class="basis-1/2 p-24 rounded-2xl shadow-2xl ">
   <img src="img/home-1.webp">  
   </div>
-  <div class="fade-in-element basis-1/2 p-24 font-['Uber Move'] text-8xl font-extrabold shadow-inner">
-    <h1>Request a ride, hop in, and go.</h1>
+  <div class="fade-in-element basis-1/2 p-24 font-['Uber Move'] text-gray-900 text-8xl font-extrabold shadow-inner">
+    <h1>Request a Car, hop in, and go.</h1>
+    <button id="scrollToTopBtn"  onclick="scrollToTop()" class="text-3xl ml-32 bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+            Get Started
+        </button>
     </div>
 </div>
 
 
-<div class="flex flex-row  rounded-3xl ">
-
-  <div  class="fade-in-element basis-1/2 p-24 font-['Uber Move'] text-8xl font-extrabold shadow-inner">
-    <h1> Drive when you want, make what you need</h1>
+<div class="flex flex-row rounded-3xl">
+    <div class="fade-in-element basis-1/2 p-24 font-['Uber Move'] text-gray-900 text-8xl font-extrabold shadow-inner">
+        <h1>Drive when you want, make what you need</h1>
+        <button id="scrollToTopBtn"  onclick="scrollToTop()" class="text-3xl ml-32 bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+            Get Started
+        </button>
     </div>
-    <div class="basis-1/2 p-24 rounded-2xl shadow-2xl ">
-  <img src="img/home-2.webp">  
-  </div>
+    <div class="basis-1/2 p-24 rounded-2xl shadow-2xl">
+        <img src="img/home-2.webp" alt="Car Image">
+    </div>
 </div>
 
 
@@ -173,8 +178,82 @@ if (isset($_SESSION['ssn'])) {
     </div>
 </div>
 
+
+<!-- toast !-->
+<div id="toast" class="fixed bottom-0 left-0 mb-4 ml-4 p-4 rounded-md text-white">
+    <!-- Toast message content will be displayed here -->
+</div>
+
+<?php if(isset($_SESSION['registration_status']) || isset($_SESSION['login_status'])): ?>
+    <script>
+        <?php if(isset($_SESSION['registration_status'])): ?>
+            <?php if($_SESSION['registration_status'] === 'success'): ?>
+                showToast('Registration successful', 'bg-green-500');
+            <?php elseif($_SESSION['registration_status'] === 'failed'): ?>
+                showToast('Registration failed: Email or SSN already exists', 'bg-red-500');
+            <?php else: ?>
+                showToast('Registration failed: Error occurred', 'bg-red-500');
+            <?php endif; ?>
+            <?php unset($_SESSION['registration_status']); ?>
+        <?php endif; ?>
+
+        <?php if(isset($_SESSION['login_status'])): ?>
+            <?php if($_SESSION['login_status'] === 'success'): ?>
+                showToast('Login successful', 'bg-green-500');
+            <?php elseif($_SESSION['login_status'] === 'incorrect_password'): ?>
+                showToast('Login failed: Incorrect password', 'bg-red-500');
+            <?php else: ?>
+                showToast('Login failed: User not found', 'bg-red-500');
+            <?php endif; ?>
+            <?php unset($_SESSION['login_status']); ?>
+        <?php endif; ?>
+
+        function showToast(message, bgColor) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.remove('hidden');
+            toast.classList.add(bgColor);
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove(bgColor);
+            }, 3000); // Hide toast after 3 seconds
+        }
+    </script>
+<?php endif; ?>
+
 <div class="full-page-background"></div>
 <script src="js/script.js"></script>
 </body>
+<footer class="bg-gray-900 text-white py-8 rounded-t-lg shadow-2xl">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Car Renal System</h3>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Faculty Of Engineering</h3>
+                <p>Compu Communication</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Team Members</h3>
+                <ul>
+                    <li><a class="hover:text-blue-500">Ranim Mohareb</a></li>
+                    <li><a class="hover:text-blue-500">Jomana Ehab</a></li>
+                    <li><a class="hover:text-blue-500">Maya</a></li>
+                    <li><a class="hover:text-blue-500">Abdelrahman Muhammad</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Teaching Assistants</h3>
+                <ul>
+                    <li><a class="hover:text-blue-500">Eng.Hashim</a></li>
+                    <li><a class="hover:text-blue-500">Eng.Rewan</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</footer>
 
 </html>

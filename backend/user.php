@@ -18,16 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register-submit"])) {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        echo "Email or SSN already exists";
+        // Registration failed: Email or SSN already exists
+        $_SESSION['registration_status'] = "failed";
+        header("Location: ../index.php");
+
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO `user` (ssn,fname,lname,phone,email,password,sex,birthdate,is_admin) VALUES
-        ('$ssn','$fname','$lname','$mobile','$email','$hashed_password','$gender','$bdate','$is_admin')";;
+        ('$ssn','$fname','$lname','$mobile','$email','$hashed_password','$gender','$bdate','$is_admin')";
         if ($conn->query($sql) === TRUE) {
-            echo "Registration successful";
+            // Registration successful
+            $_SESSION['registration_status'] = "success";
+            header("Location: ../index.php");
+
         } else {
-            echo "Error: " . $conn->error;
+            // Registration failed: Error occurred
+            $_SESSION['registration_status'] = "error";
+            header("Location: ../index.php");
+
         }
     }
 }
@@ -36,13 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login-submit"])) {
     $email = $_POST["login-mail"];
     $password = $_POST["login-password"];
 
-
     $sql = "SELECT * FROM user WHERE email = '$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row["password"])) {
+            // Login successful: Set session variables and redirect to dashboard
             $_SESSION['ssn'] = $row['ssn'];
             $_SESSION['user'] = $row;
             if($_SESSION['user']['is_admin']=='T')
@@ -53,10 +62,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login-submit"])) {
             header("Location: ../dashboard.php");
             exit;
         } else {
-            echo "Incorrect password";
+            // Login failed: Incorrect password
+            $_SESSION['login_status'] = "incorrect_password";
+            header("Location: ../index.php");
+
         }
     } else {
-        echo "User not found";
+        // Login failed: User not found
+        $_SESSION['login_status'] = "user_not_found";
+        header("Location: ../index.php");
+
     }
 }
 
