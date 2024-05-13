@@ -92,7 +92,7 @@ if (mysqli_num_rows($total_payments_result) > 0) {
 <div class="flex flex-row justify-center">
 
 <div class="flex flex-col bg-[#d2ffd5] w-1/4 h-40 rounded-2xl m-3 hover:scale-110 duration-200 ease-in">
-    <h1 class="font-['Josefin_Sans'] text-green-900 p-3 text-4xl font-bold">Your Trips</h1>
+    <h1 class="font-['Josefin_Sans'] text-green-900 p-3 text-4xl font-bold">Your Reservations</h1>
     <p class="font-['Josefin_Sans'] text-green-900 text-center p-3 text-6xl font-bold"><?php echo $total_reservations; ?></p>
 </div>
 
