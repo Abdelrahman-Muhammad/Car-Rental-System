@@ -3,7 +3,9 @@ function hideAllDivs() {
     document.getElementById("editCarDiv").classList.add("hidden");
     document.getElementById("addLocationAndBranchDiv").classList.add("hidden");
     document.getElementById("addAdminDiv").classList.add("hidden");
-    document.getElementById("viewReservationsDiv").classList.add("hidden");
+    document.getElementById("ReservationsDiv").classList.add("hidden");
+    document.getElementById("ReportsDiv").classList.add("hidden");
+
 }
 
 
@@ -34,5 +36,14 @@ function showAddAdminDiv() {
 
 function showViewReservationsDiv() {
     hideAllDivs();
-    document.getElementById("viewReservationsDiv").classList.remove("hidden");
+    document.getElementById("ReservationsDiv").classList.remove("hidden");
 }
+
+
+function showReportsDiv() {
+    hideAllDivs();
+    document.getElementById("ReportsDiv").classList.remove("hidden");
+}
+
+
+
