@@ -36,8 +36,7 @@ if (!isset($_SESSION['ssn'])) {
         </div>
         <div class="flex-auto ">
             <a href="admindashboard.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Home </a>
-            <a href="admindashboard.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Catalog </a>
-            <a href="admindashboard.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
+            <a href="about.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
         </div>
         <div class="flex-auto mr-10 text-right bg-gray-100 rounded-md">
         <h1></h1>
@@ -86,37 +85,36 @@ $locations = getDistinctValues($conn, 'location', 'location');
 ?>
 
 <!-- Dashboard Header !-->
-<div class="fade-in-element flex flex-row m-10">
-  <div style="cursor: pointer;" onclick="showAddCarDiv()" class="flex  bg-[#3837e3] w-1/3 h-80 rounded-2xl m-3 relative">
-    <a class="font-['Josefin_Sans'] text-white p-5 text-5xl font-bold "> Add Car</a>
-    <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#3837e3] text-4xl bg-[#18189b] rounded-full p-3" aria-hidden="true"></i>
+<div class="flex flex-row m-5">
+<div style="cursor: pointer;" onclick="showViewReservationsDiv()" class="flex     bg-[#ffbd66] w-1/3 h-80 rounded-2xl m-3 relative">
+    <a  class="font-['Josefin_Sans'] text-[#b0640e] p-8 text-5xl font-bold " > View Reservations</a>
+    <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#ffbd66] text-4xl bg-[#b0640e] rounded-full p-3" aria-hidden="true"></i>
   </div>
-  <div style="cursor: pointer;" onclick="showEditCarDiv()" class="flex     bg-[#d2ffd5] w-1/3 h-80 rounded-2xl m-3 relative">
-    <a class="font-['Josefin_Sans'] text-green-900 p-5 text-5xl font-bold "> Edit Car</a>
+  <div style="cursor: pointer;" onclick="showAddCarDiv()" class="flex  bg-[#d2ffd5] w-1/3 h-80 rounded-2xl m-3 relative">
+    <a class="font-['Josefin_Sans'] text-green-900 p-5 text-5xl font-bold "> Add Car</a>
     <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-green-900 text-4xl bg-[#b4eec0] rounded-full p-3" aria-hidden="true"></i>
+  </div>
+  <div style="cursor: pointer;" onclick="showEditCarDiv()" class="flex     bg-[#3837e3] w-1/3 h-80 rounded-2xl m-3 relative">
+    <a class="font-['Josefin_Sans'] text-white p-5 text-5xl font-bold "> Edit Car</a>
+    <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#3837e3] text-4xl bg-[#18189b] rounded-full p-3" aria-hidden="true"></i>
   </div>
   <div style="cursor: pointer;" onclick="showAddAdminDiv()" class="flex     bg-[#5fdfff] w-1/3 h-80 rounded-2xl m-3 relative">
     <a class="font-['Josefin_Sans'] text-[#0d3944] p-5 text-5xl font-bold " > Add Admin</a>
     <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#5fdfff] text-4xl bg-[#0a6176] rounded-full p-3" aria-hidden="true"></i>
   </div>
-  <div style="cursor: pointer;" onclick="showaddLocationAndBranchDiv()" class="flex     bg-[#de265d] w-1/3 h-80 rounded-2xl m-3 relative">
-    <a  class="font-['Josefin_Sans'] text-white p-5 text-5xl font-bold " > Add Location</a>
-    <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#de265d] text-4xl bg-[#7a0f2f] rounded-full p-3" aria-hidden="true"></i>
-  </div>
-  <div style="cursor: pointer;" onclick="showViewReservationsDiv()" class="flex     bg-[#ffbd66] w-1/3 h-80 rounded-2xl m-3 relative">
-    <a  class="font-['Josefin_Sans'] text-white p-5 text-5xl font-bold " > View Reservations</a>
-    <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#ffbd66] text-4xl bg-[#b0640e] rounded-full p-3" aria-hidden="true"></i>
-  </div>
-  
+  <div class="flex flex-col m-3">
+  <div style="cursor: pointer; position: relative;" onclick="showaddLocationAndBranchDiv()" class="h-1/2 bg-[#de265d] rounded-2xl mb-3 relative flex justify-between items-end">
+    <a class="font-['Josefin_Sans'] text-white p-5 text-3xl font-bold">Add Location</a>
+    <i class="fa fa-arrow-circle-right text-[#de265d] text-3xl bg-[#7a0f2f] rounded-full p-3 mb-10 mr-5" aria-hidden="true" ></i>
+</div>
 
 
-  <div style="cursor: pointer;" onclick="showDailyPaymentsDiv()" class="flex     bg-[#b4eec0] w-1/3 h-80 rounded-2xl m-3 relative">
-    <a  class="font-['Josefin_Sans'] text-white p-5 text-5xl font-bold " > Daily Payments</a>
-    <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#ffbd66] text-4xl bg-[#b4eec0] rounded-full p-3" aria-hidden="true"></i>
-  </div>
-  <div style="cursor: pointer;" onclick="showTheStatusDiv()" class="flex     bg-[#18189b] w-1/3 h-80 rounded-2xl m-3 relative">
-    <a  class="font-['Josefin_Sans'] text-white p-5 text-5xl font-bold " > The Status </a>
-    <i class="fa fa-arrow-circle-right absolute bottom-5 right-5 text-[#ffbd66] text-4xl bg-[#18189b] rounded-full p-3" aria-hidden="true"></i>
+
+
+<div style="cursor: pointer; position: relative;" onclick="showReportsDiv()" class="h-1/2 bg-[#650a5f] rounded-2xl relative flex justify-between items-end">
+    <a class="font-['Josefin_Sans'] text-white p-5 text-3xl font-bold">Reports</a>
+    <i class="fa fa-arrow-circle-right text-[#650a5f] text-3xl bg-[#360533] rounded-full p-3 mb-10 mr-5" aria-hidden="true" ></i>
+</div>
   </div>
 
 </div>
@@ -439,11 +437,17 @@ $locations = getDistinctValues($conn, 'location', 'location');
 
 
 <!-- View Reservations !-->
-<div id="viewReservationsDiv" class="hidden rounded-2xl shadow-2xl bg-white p-8 w-11/12 mx-auto">
+
+
+
+<div id="viewReservationsDiv" class=" rounded-2xl shadow-2xl bg-white p-8 w-11/12 mx-auto">
 <div class="flex items-center">
   <div class="mr-4">
     <h2 class="block mt-2 font-bold font-['Sora'] mb-4 text-4xl text-gray-700">View Reservations</h2>
   </div>
+
+  
+  
   <div class="ml-auto">
     <h2 class="block font-bold font-['Sora']  text-xl mr-3 text-gray-700">Sorting</h2>
   </div>
@@ -474,20 +478,18 @@ $locations = getDistinctValues($conn, 'location', 'location');
     <table class="table-auto text-[#53320c] w-full uppercase bg-slate-100 rounded-2xl shadow-lg text-sm">
       <thead class="bg-[#ffbd66] text-[#b0640e] text-md h-15  shadow-2xl ">
         <tr>
-          <th class="px-4 py-2">Reservation Number</th>
-          <th class="px-4 py-2">Car ID</th>
-          <th class="px-4 py-2">SSN</th>
-          <th class="px-4 py-2">Reservation Time</th>
-          <th class="px-4 py-2">Pickup Time</th>
-          <th class="px-4 py-2">Return Time</th>
-          <th class="px-4 py-2">Is Paid</th>
-          <th class="px-4 py-2">Total Price</th>
+          <th class=" py-2">Reservation Number</th>
+          <th class=" py-2">Car ID</th>
+          <th class=" py-2">SSN</th>
+          <th class=" py-2">Reservation Time</th>
+          <th class=" py-2">Pickup Time</th>
+          <th class=" py-2">Return Time</th>
+          <th class=" py-2">Is Paid</th>
+          <th class=" py-2">Total Price</th>
         </tr>
       </thead>
       <tbody id="reservationTableBody">
         <?php
-        // Include database connection
-        // Assuming $conn represents your database connection
 
         // Default sorting
         $sortColumn = "reservation_number";
@@ -532,87 +534,22 @@ $locations = getDistinctValues($conn, 'location', 'location');
     </table>
   </div>
 </div>
+
+<!-- Add a dropdown menu to sort the table -->
+
+
+
+
+
 <!-- View Reservations END !-->
 
 
-<!-- The Status -->
-<div id="TheStatusDiv" class="hidden rounded-2xl shadow-2xl bg-white p-8 w-11/12 mx-auto">
-    <div class="flex items-center">
-        <div class="mr-4">
-            <h2 class="block mt-2 font-bold font-['Sora'] mb-4 text-4xl text-gray-700">The Status</h2>
-        </div>
-        <div class="ml-auto">
-            <h2 class="block font-bold font-['Sora'] text-xl mr-3 text-gray-700">Sorting</h2>
-        </div>
-        <div>
-            <select id="sortSelect" onchange="sortTable()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="car_id ASC">Car ID (ASC)</option>
-                <option value="car_id DESC">Car ID (DESC)</option>
-                <option value="model ASC">Model (ASC)</option>
-                <option value="model DESC">Model (DESC)</option>
-                <option value="year ASC">Year (ASC)</option>
-                <option value="year DESC">Year (DESC)</option>
-            </select>
-        </div>
-    </div>
-    <div class="overflow-x-auto rounded-2xl shadow-xl">
-        <table class="table-auto text-[#53320c] w-full uppercase bg-slate-100 rounded-2xl shadow-lg text-sm">
-            <thead class="bg-[#ffbd66] text-[#b0640e] text-md h-15 shadow-2xl">
-                <tr>
-                    <th class="px-4 py-2">Car Number</th>
-                    <th class="px-4 py-2">Car ID</th>
-                    <th class="px-4 py-2">Model</th>
-                    <th class="px-4 py-2">Year</th>
-                    <th class="px-4 py-2">Status</th>
-                </tr>
-            </thead>
-            <tbody id="carStatusTableBody">
-                <?php
-                // Include database connection
-                // Assuming $conn represents your database connection
 
-                // Default sorting
-                $sortColumn = "car_id";
-                $sortOrder = "ASC";
 
-                // Check if sorting options are set
-                if (isset($_GET['sort'])) {
-                    $sortColumn = $_GET['sort'];
-                }
 
-                // Query to fetch cars from the database with sorting
-                $sql = "SELECT car.car_id, car.model, car.year, car_status.status FROM car
-                        LEFT JOIN car_status ON car.car_id = car_status.car_id
-                        WHERE car_status.date = 'YOUR_SPECIFIC_DATE'
-                        ORDER BY $sortColumn $sortOrder";
 
-                // Execute the query
-                $result = $conn->query($sql);
 
-                // Check if there are any cars
-                if ($result->num_rows > 0) {
-                    // Loop through each car and display them
-                    while ($row = $result->fetch_assoc()) {
-                        // Output car details in table rows
-                        echo "<tr>";
-                        echo "<td class='border px-4 py-2'>" . $row["car_id"] . "</td>";
-                        echo "<td class='border px-4 py-2'>" . $row["car_id"] . "</td>";
-                        echo "<td class='border px-4 py-2'>" . $row["model"] . "</td>";
-                        echo "<td class='border px-4 py-2'>" . $row["year"] . "</td>";
-                        echo "<td class='border px-4 py-2'>" . $row["status"] . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    // If there are no cars, display a message in a single row
-                    echo "<tr><td colspan='5' class='text-center py-4'>No cars found.</td></tr>";
-                }
 
-                // Close the database connection
-                ?>
-            </tbody>
-        </table>
-    </div>
-</div>
 
 
 
