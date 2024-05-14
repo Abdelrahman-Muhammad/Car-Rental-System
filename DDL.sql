@@ -26,6 +26,7 @@ CREATE TABLE car
     transmission VARCHAR(6)      NOT NULL,
     img            TEXT         NOT NULL,
     branch_name    VARCHAR(255) NOT NULL,
+    plate_id        VARCHAR(255) ,
     FOREIGN KEY (branch_name) REFERENCES `branch` (branch_name) ON DELETE CASCADE
 );
 

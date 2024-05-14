@@ -15,24 +15,44 @@ if (isset($_SESSION['ssn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora&family=Manrope&family=Josefin+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/uber-move-text" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/mona-sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <header>
-    <div class="flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
-        <div class="flex-auto w-44 ">
-            <a href="#" title="" class="flex justify-start">
-                <a href="index.php" title="" class="font-['Sora'] inline-flex px-8 text-3xl font-extrabold text-blue-800 transition-all duration-200 hover:text-indigo-700 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Car Rental System </a>
-            </a>
-        </div>
-        <div class="flex-auto w-72 text-center">
-            <a href="index.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Home </a>
-            <a href="#" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Catalog </a>
-            <a href=" #" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
-        </div>
+    <div class="font-['Sora'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
+    <div class="flex-auto w-72">
+        <a href="dashboard.php" title="" class="inline-flex items-center">
+            <i class="fas fa-car text-4xl text-blue-800 mr-3"></i>
+            <span class="text-3xl font-extrabold text-blue-800 transition-all duration-200 hover:text-blue-900 focus:text-blue-600">Car Rental System</span>
+        </a>
+    </div>
+        
+
+        <div class="font-['Sora'] flex justify-center">
+    <div class="inline-flex rounded-md shadow-sm">
+        <a href="dashboard.php" aria-current="page" class="flex items-center px-4 py-2 text-xl font-bold text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-home mr-2"></i>
+            Home
+        </a>
+        <a href="guestsearch.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-search mr-2"></i>
+            Search
+        </a>
+        <a href="guestAbout.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-info-circle mr-2"></i>
+            About
+        </a>
+    </div>
+</div>
+
+
+
         <div class="flex-auto mr-10 text-right">
             <button id="loginButtonHeader" href="#" title="" class="font-['Sora'] inline-flex  mr-3 px-6  py-2 text-xl font-normal  text-white transition-all duration-200 bg-green-700 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700 z-50" role="button"> Login </button>
             <button id="registerButtonHeader" href="#" title="" class="font-['Sora'] inline-flex  px-6  py-2 text-xl font-normal text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700 z-50" role="button"> Register </button>

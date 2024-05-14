@@ -14,12 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $img = $_FILES["img"]["name"]; 
     $branch_name = $_POST["branch_name"];
     $out_of_service = isset($_POST["out_of_service"]) ? "T" : "F";
+    $plate_id =$_POST["plate_id"];
 
     $target_dir = "../img/"; // Specify the directory where you want to store uploaded images
     $target_file = $target_dir . basename($_FILES["img"]["name"]);
     move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
 
-    $sql = "INSERT INTO car (model, year, price, color, power, transmission, img, branch_name, out_of_service) VALUES ('$model', $year, $price, '$color', $power, '$transmission', '$img', '$branch_name', '$out_of_service')";
+    $sql = "INSERT INTO car (model, year, price, color, power, transmission, img, branch_name, out_of_service,plate_id) VALUES ('$model', $year, $price, '$color', $power, '$transmission', '$img', '$branch_name', '$out_of_service','$plate_id')";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['toastType'] = 'success';

@@ -2,12 +2,7 @@
 session_start();
 include './backend/db_connection.php';
 
-// Check if user is logged in
-if (!isset($_SESSION['ssn'])) {
-    // Redirect to home page if not logged in
-    header("Location: index.php");
-    exit();
-}
+
 ?>
 
 <!doctype html>
@@ -26,7 +21,6 @@ if (!isset($_SESSION['ssn'])) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
 
 <header>
     <div class="font-['Sora'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
@@ -44,15 +38,11 @@ if (!isset($_SESSION['ssn'])) {
             <i class="fas fa-home mr-2"></i>
             Home
         </a>
-        <a href="userreservations.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-            <i class="fas fa-calendar-alt mr-2"></i>
-            My Reservations
-        </a>
         <a href="search.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
             <i class="fas fa-search mr-2"></i>
             Search
         </a>
-        <a href="About.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+        <a href="guestAbout.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
             <i class="fas fa-info-circle mr-2"></i>
             About
         </a>
@@ -60,23 +50,15 @@ if (!isset($_SESSION['ssn'])) {
 </div>
 
 
-
-
-<div class="font-['Mona_Sans'] flex-auto mr-10 text-right">
-    <?php
-    $user = $_SESSION['user'];
-    $user_fname = $user['fname'];
-    $user_lname = $user['lname'];
-    ?>
-    <div class="flex items-center justify-end space-x-4">
-        <div class="flex-none bg-gray-100 rounded-md p-3 font-bold text-xl">
-            <p>Welcome, <?php echo $user_fname; ?></p>
+        <div class="flex-auto mr-10 text-right">
+            <button id="loginButtonHeader" href="index.php" title="" class="font-['Sora'] inline-flex  mr-3 px-6  py-2 text-xl font-normal  text-white transition-all duration-200 bg-green-700 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700 z-50" role="button"> Login </button>
+            <button id="registerButtonHeader" href="index.php" title="" class="font-['Sora'] inline-flex  px-6  py-2 text-xl font-normal text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700 z-50" role="button"> Register </button>
         </div>
-        <a href="logout.php" class="flex-none bg-red-600 text-white rounded-md p-3 font-bold text-xl hover:bg-red-700">Log Out</a>
     </div>
-</div>
-
 </header>
+
+
+<body>
 
 <div class="flex flex-row justify-center">
     <div class="flex flex-col bg-[#d2ffd5] w-1/p-10 h-100 rounded-2xl m-3 duration-200 ease-in">

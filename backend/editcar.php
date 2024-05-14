@@ -28,7 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["color"])) {
         $updated_fields["color"] = $_POST["color"];
     }
-
+  // Check if the user changed the plate_id
+  if (!empty($_POST["plate_id"])) {
+    $updated_fields["plate_id"] = $_POST["plate_id"];
+}
     // Check if the user changed the power
     if (!empty($_POST["power"])) {
         $updated_fields["power"] = $_POST["power"];

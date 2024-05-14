@@ -1,43 +1,56 @@
 USE crs;
 
-INSERT INTO location VALUES ('France');
-INSERT INTO location VALUES ('Egypt');
-INSERT INTO location VALUES ('England');
-INSERT INTO location VALUES ('Russia');
+INSERT INTO location (location) VALUES ('Egypt'), ('UAE'), ('Saudi Arabic'), ('Lebanon');
 
-INSERT INTO branch VALUES ('Paris', 'France');
-INSERT INTO branch VALUES ('Lyon', 'France');
-INSERT INTO branch VALUES ('Alexandria', 'Egypt');
-INSERT INTO branch VALUES ('Cairo', 'Egypt');
-INSERT INTO branch VALUES ('Liverpool', 'England');
-INSERT INTO branch VALUES ('Manchester', 'England');
-INSERT INTO branch VALUES ('Moscow', 'Russia');
-INSERT INTO branch VALUES ('St. Petersburg', 'Russia');
+INSERT INTO branch (branch_name, location) VALUES ('Cairo', 'Egypt'), ('Alexandria', 'Egypt');
+INSERT INTO branch (branch_name, location) VALUES ('Dubai', 'UAE'), ('Abu Dhabi', 'UAE');
+INSERT INTO branch (branch_name, location) VALUES ('Riyadh', 'Saudi Arabic'), ('Jeddah', 'Saudi Arabic');
+INSERT INTO branch (branch_name, location) VALUES ('Beirut', 'Lebanon'), ('Tripoli', 'Lebanon');
 
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('BMW 3-Series G20', 2020, 'F', 200, 'blue', 140, 'Auto', 'blueBMW.jpg', 'Paris');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Hyundai i20', 2019, 'F', 280, 'blue', 140, 'Auto', 'blueHyundai.jpg', 'Lyon');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Kia Rio', 2018, 'F', 100, 'white', 140, 'Auto', 'whiteKIA.jpg', 'Alexandria');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Nissan Sunny', 2017, 'F', 250, 'grey', 140, 'Manual', 'greyNissan.jpg', 'Cairo');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Toyota Yaris', 2016, 'F', 150, 'grey', 140, 'Manual', 'greyToyota.jpg', 'Liverpool');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Skoda Octavia', 2017, 'F', 230, 'white', 140, 'Manual', 'whiteSkoda.jpg', 'Manchester');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Fiat Tipo', 2018, 'F', 200, 'red', 140, 'Manual', 'redFIAT.jpg', 'Moscow');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Mercedes s6', 2019, 'F', 150, 'red', 140, 'Auto', 'redMercedes.jpg', 'Moscow');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Renault Megane', 2020, 'F', 250, 'yellow', 140, 'Auto', 'yellowRenault.jpg', 'Moscow');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Peugeot 508', 2021, 'F', 180, 'red', 140, 'Auto', 'redPeugeot.jpg', 'Moscow');
-INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name) VALUES ('Seat Leon', 2017, 'T', 170, 'red', 140, 'Auto', 'redSeat.jpg', 'Moscow');
+--  cars for Egypt branches
+INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name, plate_id)
+VALUES 
+('Chevrolet Cruze', 2019, 'F', 130, 'red', 160, 'Auto', 'cruze.jpg', 'Cairo', 'EG-9876'),
+('Ford Focus', 2020, 'F', 140, 'yellow', 170, 'Auto', 'focus.jpg', 'Cairo', 'EG-5432'),
+('Volkswagen Jetta', 2018, 'F', 120, 'red', 150, 'Auto', 'jetta.jpg', 'Alexandria', 'EG-3344'),
+('BMW 3 Series', 2017, 'F', 180, 'blue', 200, 'Auto', '3series.jpg', 'Alexandria', 'EG-5566');
 
-INSERT INTO user VALUES ('12551289579122', 'Admin', 'Admin', '01223674874', 'admin@gmail.com', '698d51a19d8a121ce581499d7b701668', 'M', '1996-09-05', 'T');
-INSERT INTO user VALUES ('15176891141235', 'Fady', 'Sameh', '01233547384', 'fady@gmail.com', '30dcd0487df76c49254f6644d08a1c01', 'M', '2000-04-12', 'F');
-INSERT INTO user VALUES ('29673262853274', 'Sandra', 'Adel', '01248563857', 'sandra@gmail.com', '6df02b541a67198aff344875085f2336', 'F', '1996-11-03', 'F');
-INSERT INTO user VALUES ('46634237494769', 'Amr', 'Mohamed', '01257673694', 'amr@gmail.com', '481c48991702d420efc19afb28c3f533', 'M', '2000-05-15', 'F');
+--  cars for UAE branches
+INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name, plate_id)
+VALUES 
+('Mercedes-Benz C-Class', 2019, 'F', 200, 'silver', 220, 'Auto', 'cclass.jpg', 'Dubai', 'UAE-9876'),
+('Audi A4', 2020, 'F', 210, 'black', 230, 'Auto', 'a4.jpg', 'Dubai', 'UAE-5432'),
+('Lexus ES', 2018, 'F', 190, 'white', 210, 'Manual', 'es.jpg', 'Abu Dhabi', 'UAE-3344'),
+('Infiniti Q50', 2017, 'F', 220, 'black', 240, 'Auto', 'q50.jpg', 'Abu Dhabi', 'UAE-5566');
 
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (4, '15176891141235', '2022-01-15', '2022-02-10', '2022-02-11', 'T', 100);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (5, '15176891141235', '2022-01-16', '2022-02-05', '2022-02-06', 'T', 120);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (6, '15176891141235', '2022-01-17', '2022-02-12', '2022-02-12', 'T', 150);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (1, '29673262853274', '2022-01-18', '2022-02-12', '2022-02-15', 'F', 200);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (2, '29673262853274', '2022-01-19', '2022-02-16', '2022-02-16', 'F', 250);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (3, '29673262853274', '2022-01-20', '2022-02-18', '2022-02-20', 'T', 300);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (7, '29673262853274', '2022-01-21', '2022-02-21', '2022-02-22', 'F', 180);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (8, '46634237494769', '2022-01-22', '2022-01-27', '2022-01-29', 'T', 220);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (9, '46634237494769', '2022-01-23', '2022-01-30', '2022-01-31', 'F', 250);
-INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price) VALUES (10, '46634237494769', '2022-01-24', '2022-03-28', '2022-03-29', 'T', 300);
+--  cars for Saudi Arabic branches
+INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name, plate_id)
+VALUES 
+('Toyota Land Cruiser', 2019, 'F', 250, 'silver', 280, 'Auto', 'landcruiser.jpg', 'Riyadh', 'SA-9876'),
+('Nissan Patrol', 2020, 'F', 260, 'white', 270, 'Auto', 'patrol.jpg', 'Riyadh', 'SA-5432'),
+('Ford Explorer', 2018, 'F', 240, 'white', 260, 'Manual', 'explorer.jpg', 'Jeddah', 'SA-3344'),
+('Chevrolet Tahoe', 2017, 'F', 270, 'red', 290, 'Auto', 'tahoe.jpg', 'Jeddah', 'SA-5566');
+
+--  cars for Lebanon branches
+INSERT INTO car (model, year, out_of_service, price, color, power, transmission, img, branch_name, plate_id)
+VALUES 
+('Kia Sportage', 2019, 'F', 140, 'blue', 160, 'Auto', 'sportage.jpg', 'Beirut', 'LB-9876'),
+('Hyundai Santa Fe', 2020, 'F', 150, 'red', 170, 'Auto', 'santafe.jpg', 'Beirut', 'LB-5432'),
+('Mazda CX-5', 2018, 'F', 130, 'silver', 150, 'Auto', 'cx5.jpg', 'Tripoli', 'LB-3344'),
+('Jeep Cherokee', 2017, 'F', 160, 'white', 180, 'Auto', 'cherokee.jpg', 'Tripoli', 'LB-5566');
+
+
+-- Insert sample users
+INSERT INTO `user` (ssn, fname, lname, phone, email, password, sex, birthdate, is_admin)
+VALUES 
+
+('12345678901234', 'Jomana', 'Ehab', '123456789', 'jomana@gmail.com', '$2y$10$Ymu31ct.ECjKxFqq3NeRjuBDaLc9/WfeqDCJHQWRcVd3KKDVPC9s2', 'M', '1990-05-15', 'F'),
+('23456789012345', 'Ranim', 'Mohareb', '987654321', 'ranim@gmail.com', '$2y$10$KSZCPA1EL3hTRDntLzLL3edKbQgPeX/FV7hYrKkcR/445E7lXw6jO', 'F', '1995-08-20', 'F'),
+('34567890123456', 'Abdelrahman', 'Muhammad', '456123789', 'abdelrahman@gmail.com', '$2y$10$XijFItvvexzzNbqyLt9.E.ePOlOFw6ZibZpxkRhsqTILqQsHdv4fa', 'M', '1985-03-10', 'T');
+
+-- Insert sample reservations
+INSERT INTO reservation (car_id, ssn, reservation_time, pickup_time, return_time, is_paid, total_price)
+VALUES 
+(1, '12345678901234', '2024-05-15', '2024-05-20', '2024-05-25', 'T', 650),
+(2, '23456789012345', '2024-05-16', '2024-05-21', '2024-05-26', 'T', 700),
+(3, '34567890123456', '2024-05-17', '2024-05-22', '2024-05-27', 'T', 600);

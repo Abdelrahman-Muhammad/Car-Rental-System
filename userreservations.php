@@ -10,13 +10,14 @@ if (!isset($_SESSION['ssn'])) {
 }
 ?>
 
+
 <!doctype html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Car Rental System</title>
+    <title>Car Rental System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora&family=Manrope&family=Josefin+Sans&display=swap" rel="stylesheet">
@@ -25,8 +26,6 @@ if (!isset($_SESSION['ssn'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body>
 
 <header>
     <div class="font-['Sora'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
@@ -78,19 +77,61 @@ if (!isset($_SESSION['ssn'])) {
 
 </header>
 
-<div class="flex flex-row justify-center">
-    <div class="flex flex-col bg-[#d2ffd5] w-1/p-10 h-100 rounded-2xl m-3 duration-200 ease-in">
-        <h1 class="font-Josefin_Sans text-white-900 p-3 text-4xl font-bold">About The System</h1>
-        <p class="text-center p-3">The car rental system is designed to cater to both administrative and user needs efficiently. Administrators hold comprehensive control over the system's operations, enabling them to manage various aspects seamlessly. They can Add Car, allowing them to expand the fleet by adding new vehicles with detailed specifications such as model, year, price, color, and more. The Edit Car feature empowers administrators to update existing car details as needed, ensuring accuracy and relevance in the system's database. The ability to Add Admin grants administrators the privilege to extend access and responsibilities to additional staff members, facilitating collaborative management. Moreover, administrators can Add Location, enabling the system to accommodate multiple rental locations, enhancing accessibility and convenience for users across different areas.
 
-Administrators can View Reservations, offering them insights into the current reservation status, facilitating efficient scheduling and resource allocation. The Daily Payments feature enables administrators to track and manage daily rental payments, ensuring financial transparency and accountability. Lastly, The Status feature provides administrators with a comprehensive overview of the system's operational status, including the availability of vehicles, rental locations, and reservation statistics, enabling informed decision-making and proactive management.
 
-On the user side, the system offers a user-friendly interface with essential functionalities tailored to enhance the rental experience. Users can easily reserve a car of their choice, selecting from the available fleet based on their preferences and requirements. The system provides users with visibility into their debt, allowing them to stay informed about their financial obligations and facilitating timely payments. Additionally, users can access their reservation history, enabling them to review past bookings and track their rental activity over time. The All Reservations feature offers users a comprehensive overview of all reservations made within the system, enhancing transparency and facilitating better planning and organization for future rentals. Overall, the car rental system aims to streamline rental operations, ensuring a seamless and satisfactory experience for both administrators and users alike.</p>
-    </div>
+<body>
+
+
+<div  class=" rounded-2xl shadow-2xl bg-white p-8 w-11/12 mx-auto">
+<h2 class="block mt-2 font-bold font-['Sora'] mb-4 text-4xl leading-tight border-blue-800 border-b-8 text-gray-700">My Reservations</h2>
+
+<?php
+
+// Check if user is logged in
+if(isset($_SESSION['ssn'])) {
+    // Retrieve SSN from session
+    $ssn = $_SESSION['ssn'];
+
+    // Query to fetch reservations of the specific customer
+    $sql = "SELECT reservation.*, car.model, car.car_id, user.fname, user.lname FROM reservation 
+            JOIN car ON reservation.car_id = car.car_id 
+            JOIN user ON reservation.ssn = user.ssn 
+            WHERE reservation.ssn = '$ssn'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output table header
+        echo "<div class='overflow-x-auto'>";
+        echo "<table class='min-w-full divide-y divide-gray-200'>";
+        echo "<thead class='bg-gray-50'><tr><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Reservation Number</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Reservation Time</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Pickup Time</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Return Time</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Customer Name</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Car Model</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Car ID</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Paid</th><th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200'>Total Payment</th></tr></thead><tbody class='bg-white divide-y divide-gray-200'>";
+
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
+            // Output table rows with reservation details and customer information
+            echo "<tr><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['reservation_number'] . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['reservation_time'] . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['pickup_time'] . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['return_time'] . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['fname'] . " " . $row['lname'] . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['model'] . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['car_id'] . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . ($row['is_paid'] == 'T' ? 'Yes' : 'No') . "</td><td class='px-6 py-4 whitespace-nowrap border border-gray-200'>" . $row['total_price'] . "</td></tr>";
+        }
+
+        echo "</tbody></table>";
+        echo "</div>";
+    } else {
+        echo "<p class='text-red-500'>No reservations found for the current user.</p>";
+    }
+} else {
+    // Redirect the user to the login page if not logged in
+    header("Location: login.php");
+    exit();
+}
+?>
+
+
+
 </div>
 
+
+
+
+
+
 <div class="full-page-background"></div>
-
+<script src="js/dashboard.js"></script>
 </body>
-
-</html>

@@ -2,12 +2,14 @@
 session_start();
 include './backend/db_connection.php';
 
+
 // Check if user is logged in
-if (!isset($_SESSION['ssn'])) {
-    // Redirect to home page if not logged in
-    header("Location: index.php");
+if (!isset($_SESSION['ssn'])  || $_SESSION['user']['is_admin'] == 'T') {
+    // Redirect to home page if not logged in or not an admin
+    header("Location: admindashboard.php");
     exit();
 }
+
 ?>
 
 
@@ -28,38 +30,54 @@ if (!isset($_SESSION['ssn'])) {
 </head>
 
 <header>
-    <div class="font-['Mona_Sans'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
-        <div class="flex-auto w-44 ">
-            <a href="#" title="" class="flex justify-start">
-                <a href="dashboard.php" title="" class="font-['Sora'] inline-flex px-8 text-2xl font-extrabold text-blue-800 transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Car Rental System </a>
-            </a>
-        </div>
-        <div class="flex-auto ">
-            <a href="dashboard.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Home </a>
-            <a href="dashboard.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Catalog </a>
-            <a href="About.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
-        </div>
-        <div class="flex-auto mr-10 text-right bg-gray-100 rounded-md">
-        <h1></h1>
-        
-        <?php
-        // Example PHP code
-        $user = $_SESSION['user'];
-        $user_fname = $user['fname'];
-        $user_lname = $user['lname'];
-
-        ?>
-<div class="flex flex-row ">
-        <div class="flex-auto w-10  text-left text-xl bg-gray-100 rounded-md p-3 font-bold ">
-        <p>Welcome , <?php echo $user_fname; ?></p>
-        </div>
-        <a class="flex text-xl bg-red-600 text-white rounded-md p-3 font-bold" href="logout.php">Log Out</a>
-        </div>
-
-        </div>
+    <div class="font-['Sora'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
+    <div class="flex-auto w-72">
+        <a href="dashboard.php" title="" class="inline-flex items-center">
+            <i class="fas fa-car text-4xl text-blue-800 mr-3"></i>
+            <span class="text-3xl font-extrabold text-blue-800 transition-all duration-200 hover:text-blue-900 focus:text-blue-600">Car Rental System</span>
+        </a>
     </div>
-</header>
+        
 
+        <div class="font-['Sora'] flex justify-center">
+    <div class="inline-flex rounded-md shadow-sm">
+        <a href="dashboard.php" aria-current="page" class="flex items-center px-4 py-2 text-xl font-bold text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-home mr-2"></i>
+            Home
+        </a>
+        <a href="userreservations.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-calendar-alt mr-2"></i>
+            My Reservations
+        </a>
+        <a href="search.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-search mr-2"></i>
+            Search
+        </a>
+        <a href="About.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-info-circle mr-2"></i>
+            About
+        </a>
+    </div>
+</div>
+
+
+
+
+<div class="font-['Mona_Sans'] flex-auto mr-10 text-right">
+    <?php
+    $user = $_SESSION['user'];
+    $user_fname = $user['fname'];
+    $user_lname = $user['lname'];
+    ?>
+    <div class="flex items-center justify-end space-x-4">
+        <div class="flex-none bg-gray-100 rounded-md p-3 font-bold text-xl">
+            <p>Welcome, <?php echo $user_fname; ?></p>
+        </div>
+        <a href="logout.php" class="flex-none bg-red-600 text-white rounded-md p-3 font-bold text-xl hover:bg-red-700">Log Out</a>
+    </div>
+</div>
+
+</header>
 
 <body>
 

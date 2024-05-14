@@ -3,13 +3,13 @@ session_start();
 include './backend/db_connection.php';
 
 // Check if user is logged in
-if (!isset($_SESSION['ssn'])) {
-    // Redirect to home page if not logged in
-    header("Location: index.php");
-    exit();
+if (!isset($_SESSION['ssn']) ||  $_SESSION['user']['is_admin'] !== 'T') {
+  // Redirect to home page if not logged in or not an admin
+  header("Location: dashboard.php");
+  exit();
 }
-?>
 
+?>
 
 <!doctype html>
 <html>
@@ -28,34 +28,44 @@ if (!isset($_SESSION['ssn'])) {
 </head>
 
 <header>
-    <div class="font-['Mona_Sans'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
-        <div class="flex-auto w-44 ">
-            <a href="#" title="" class="flex justify-start">
-                <a href="admindashboard.php" title="" class="font-['Sora'] inline-flex px-8 text-2xl font-extrabold text-blue-800 transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Car Rental System </a>
-            </a>
-        </div>
-        <div class="flex-auto ">
-            <a href="admindashboard.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> Home </a>
-            <a href="About.php" title="" class="inline-flex px-8 text-xl font-bold text-black transition-all duration-200 hover:text-blue-900 focus:text-blue-600 border border-transparent rounded-md items-center hover:bg-slate-100 focus:bg-slate-100"> About </a>
-        </div>
-        <div class="flex-auto mr-10 text-right bg-gray-100 rounded-md">
-        <h1></h1>
-        
-        <?php
-        // Example PHP code
-        $user = $_SESSION['user'];
-        $user_fname = $user['fname'];
-        $user_lname = $user['lname'];
+<div class="font-['Sora'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
+    <div class="flex-auto w-72">
+        <a href="admindashboard.php" title="" class="inline-flex items-center">
+            <i class="fas fa-car text-4xl text-blue-800 mr-3"></i>
+            <span class="text-3xl font-extrabold text-blue-800 transition-all duration-200 hover:text-blue-900 focus:text-blue-600">Car Rental System</span>
+        </a>
+    </div>
 
-        ?>
-<div class="flex flex-row ">
-        <div class="flex-auto w-10  text-left text-xl bg-gray-100 rounded-md p-3 font-bold ">
-        <p>Welcome , <?php echo $user_fname; ?></p>
-        </div>
-        <a class="flex text-xl bg-red-600 text-white rounded-md p-3 font-bold" href="logout.php">Log Out</a>
-        </div>
+    <div class="font-['Sora'] flex justify-center">
+    <div class="inline-flex rounded-md shadow-sm">
+        <a href="dashboard.php" aria-current="page" class="flex items-center px-4 py-2 text-xl font-bold text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-home mr-2"></i>
+            Home
+        </a>
+        <a href="search.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-search mr-2"></i>
+            Search
+        </a>
+        <a href="About.php" class="flex items-center px-4 py-2 text-xl font-bold text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <i class="fas fa-info-circle mr-2"></i>
+            About
+        </a>
+    </div>
+</div>
 
+<div class="font-['Mona_Sans'] flex-auto mr-10 text-right">
+    <?php
+    $user = $_SESSION['user'];
+    $user_fname = $user['fname'];
+    $user_lname = $user['lname'];
+    ?>
+    <div class="flex items-center justify-end space-x-4">
+        <div class="flex-none bg-gray-100 rounded-md p-3 font-bold text-xl">
+            <p>Welcome, <?php echo $user_fname; ?></p>
         </div>
+        <a href="logout.php" class="flex-none bg-red-600 text-white rounded-md p-3 font-bold text-xl hover:bg-red-700">Log Out</a>
+    </div>
+</div>
     </div>
 </header>
 
@@ -165,6 +175,10 @@ $locations = getDistinctValues($conn, 'location', 'location');
       </select>
     </div>
     <div class="col-span-1">
+      <label for="plate_id" class="text-lg">Plate Id:</label>
+      <input type="text" id="plate_id" name="plate_id" class="w-full p-2 border border-gray-300 rounded-md" >
+    </div>
+    <div class="col-span-1">
       <label for="out_of_service" class="text-lg">Out of Service:</label>
       <input type="checkbox" id="out_of_service" name="out_of_service" class="w-full p-2 border border-gray-300 rounded-md">
     </div>
@@ -194,6 +208,8 @@ $locations = getDistinctValues($conn, 'location', 'location');
                 <th class="px-4 py-2">Transmission</th>
                 <th class="px-4 py-2">Image</th>
                 <th class="px-4 py-2">Branch Name</th>
+                <th class="px-4 py-2">Plate ID</th>
+
             </tr>
         </thead>
         <tbody id="carTableBody">
@@ -223,6 +239,8 @@ $locations = getDistinctValues($conn, 'location', 'location');
                     echo "<td class='border px-4 py-2'>" . $row["transmission"] . "</td>";
                     echo "<td class='border px-4 py-2'>" . $row["img"] . "</td>";
                     echo "<td class='border px-4 py-2'>" . $row["branch_name"] . "</td>";
+                    echo "<td class='border px-4 py-2'>" . $row["plate_id"] . "</td>";
+
                     echo "</tr>";
                 }
             } else {
@@ -291,6 +309,10 @@ $locations = getDistinctValues($conn, 'location', 'location');
           <option value="<?php echo $branch;?>"><?php echo $branch;?></option>
         <?php endforeach;?>
       </select>
+    </div>
+    <div class="col-span-1">
+      <label for="plate_id" class="text-lg">Plate ID:</label>
+      <input type="text" id="plate_id" name="plate_id" class="w-full p-2 border border-gray-300 rounded-md">
     </div>
     <div class="col-span-1">
       <label for="out_of_service" class="text-lg">Out of Service:</label>
@@ -435,6 +457,10 @@ $locations = getDistinctValues($conn, 'location', 'location');
 
 <!-- Add Admin Options END !-->
 
+<div id="toastMessage" class="hidden flex mx-auto justify-center items-center w-1/2 p-4 mb-4 text-white bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+    <div id="toastIcon" class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg"></div>
+    <div id="toastText" class="ms-3 text-sm font-normal"></div>
+</div>
 
 <!-- View Reservations !-->
 
@@ -810,10 +836,7 @@ $locations = getDistinctValues($conn, 'location', 'location');
 
 
 <!-- Toast Message Container -->
-<div id="toastMessage" class="hidden flex mx-auto justify-center items-center w-1/2 p-4 mb-4 text-white bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
-    <div id="toastIcon" class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg"></div>
-    <div id="toastText" class="ms-3 text-sm font-normal"></div>
-</div>
+
 <!-- End of Toast Message Container -->
 
 
@@ -827,7 +850,7 @@ function showToast(type, message) {
         const toastDiv = document.getElementById('toastMessage');
         const toastText = document.getElementById('toastText');
         const toastIcon = document.getElementById('toastIcon');
-
+  
         // Set toast message text
         toastText.textContent = message;
 

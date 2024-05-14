@@ -10,13 +10,14 @@ if (!isset($_SESSION['ssn'])) {
 }
 ?>
 
+
 <!doctype html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Car Rental System</title>
+    <title>Car Rental System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora&family=Manrope&family=Josefin+Sans&display=swap" rel="stylesheet">
@@ -25,8 +26,6 @@ if (!isset($_SESSION['ssn'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body>
 
 <header>
     <div class="font-['Sora'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
@@ -78,19 +77,68 @@ if (!isset($_SESSION['ssn'])) {
 
 </header>
 
-<div class="flex flex-row justify-center">
-    <div class="flex flex-col bg-[#d2ffd5] w-1/p-10 h-100 rounded-2xl m-3 duration-200 ease-in">
-        <h1 class="font-Josefin_Sans text-white-900 p-3 text-4xl font-bold">About The System</h1>
-        <p class="text-center p-3">The car rental system is designed to cater to both administrative and user needs efficiently. Administrators hold comprehensive control over the system's operations, enabling them to manage various aspects seamlessly. They can Add Car, allowing them to expand the fleet by adding new vehicles with detailed specifications such as model, year, price, color, and more. The Edit Car feature empowers administrators to update existing car details as needed, ensuring accuracy and relevance in the system's database. The ability to Add Admin grants administrators the privilege to extend access and responsibilities to additional staff members, facilitating collaborative management. Moreover, administrators can Add Location, enabling the system to accommodate multiple rental locations, enhancing accessibility and convenience for users across different areas.
 
-Administrators can View Reservations, offering them insights into the current reservation status, facilitating efficient scheduling and resource allocation. The Daily Payments feature enables administrators to track and manage daily rental payments, ensuring financial transparency and accountability. Lastly, The Status feature provides administrators with a comprehensive overview of the system's operational status, including the availability of vehicles, rental locations, and reservation statistics, enabling informed decision-making and proactive management.
 
-On the user side, the system offers a user-friendly interface with essential functionalities tailored to enhance the rental experience. Users can easily reserve a car of their choice, selecting from the available fleet based on their preferences and requirements. The system provides users with visibility into their debt, allowing them to stay informed about their financial obligations and facilitating timely payments. Additionally, users can access their reservation history, enabling them to review past bookings and track their rental activity over time. The All Reservations feature offers users a comprehensive overview of all reservations made within the system, enhancing transparency and facilitating better planning and organization for future rentals. Overall, the car rental system aims to streamline rental operations, ensuring a seamless and satisfactory experience for both administrators and users alike.</p>
+<body>
+
+<form id="searchForm" action="javascript:void(0);" method="POST" class=" mb-5 w-8/12  mx-auto">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" id="default-search" name="search_query" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-2xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Car Model, Color, Transmission ..." required />
+        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
     </div>
-</div>
+</form>
+
+<div id="searchResults"></div>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        var isAdmin = <?php echo isset($_SESSION['user']['is_admin']) ? ($_SESSION['user']['is_admin'] === 'T' ? 'true' : 'false') : 'false'; ?>;
+
+        // Get the search query from the input field
+        var searchQuery = document.getElementById('default-search').value;
+
+        // Create a FormData object and append the search query
+        var formData = new FormData();
+        formData.append('search_query', searchQuery);
+
+        // Make an AJAX request to the backend PHP file
+        var xhr = new XMLHttpRequest();
+        if (isAdmin) {
+            // User is an admin, send request to adminsearch.php
+        xhr.open('POST', 'backend/adminsearch.php', true);
+        } else {
+            // User is not an admin, send request to usersearch.php
+        xhr.open('POST', 'backend/usersearch.php', true);
+        }
+
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request was successful, update the search results div
+                document.getElementById('searchResults').innerHTML = xhr.responseText;
+            } else {
+                // Request failed, display an error message
+                document.getElementById('searchResults').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+            }
+        };
+        xhr.onerror = function() {
+            // Request failed, display an error message
+            document.getElementById('searchResults').innerHTML = '<p class="text-red-500">An error occurred. Please try again later.</p>';
+        };
+        xhr.send(formData); // Send the AJAX request with form data
+    });
+</script>
+
+
+
+
+
 
 <div class="full-page-background"></div>
-
 </body>
-
-</html>
