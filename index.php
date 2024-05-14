@@ -228,7 +228,7 @@ if (isset($_SESSION['ssn'])) {
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-                <h3 class="text-2xl font-bold mb-4">Car Renal System</h3>
+                <h3 class="text-2xl font-bold mb-4">Car Rental System</h3>
             </div>
             <div>
                 <h3 class="text-lg font-bold mb-4">Faculty Of Engineering</h3>
