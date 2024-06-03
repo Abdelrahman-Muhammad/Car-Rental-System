@@ -63,4 +63,4 @@
         }
     
 
-    
+        document.getElementById('movingImage').style.animation = 'moveImage 2s forwards';

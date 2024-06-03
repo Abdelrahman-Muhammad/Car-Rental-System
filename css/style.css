@@ -28,3 +28,13 @@ background-image: url("../img/beams.jpg");
 /*
 background: radial-gradient(circle 300px at 10% 50px, #e5dbff, transparent);*/
 }
+
+@keyframes moveImage {
+    0% {
+      transform: translateX(-100px) translateY(-100px) ;
+    }
+    100% {
+      transform: translateX(100px) ;
+    }
+  }
+  

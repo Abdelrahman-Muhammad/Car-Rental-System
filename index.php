@@ -27,7 +27,7 @@ if (isset($_SESSION['ssn'])) {
 <header>
     <div class="font-['Sora'] flex p-4 mt-3 mb-5 items-center shadow-md rounded-xl">
     <div class="flex-auto w-72">
-        <a href="dashboard.php" title="" class="inline-flex items-center">
+        <a href="index.php" title="" class="inline-flex items-center">
             <i class="fas fa-car text-4xl text-blue-800 mr-3"></i>
             <span class="text-3xl font-extrabold text-blue-800 transition-all duration-200 hover:text-blue-900 focus:text-blue-600">Car Rental System</span>
         </a>
@@ -36,7 +36,7 @@ if (isset($_SESSION['ssn'])) {
 
         <div class="font-['Sora'] flex justify-center">
     <div class="inline-flex rounded-md shadow-sm">
-        <a href="dashboard.php" aria-current="page" class="flex items-center px-4 py-2 text-xl font-bold text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+        <a href="index.php" aria-current="page" class="flex items-center px-4 py-2 text-xl font-bold text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
             <i class="fas fa-home mr-2"></i>
             Home
         </a>
@@ -76,7 +76,7 @@ if (isset($_SESSION['ssn'])) {
         <a id="loginButton" title="" class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 font-['Uber Move'] inline-flex  mr-3 px-8  py-3 text-2xl font-normal  text-white transition-all duration-200 bg-green-700 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Login </a>
         <a id="registerButton" title="" class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110  duration-300 font-['Uber Move'] inline-flex  px-8  py-3 text-2xl font-normal text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md items-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Register </a>
     </div>
-    <img src="img/car.png" alt="" class="absolute top-100 bottom-0 right-2/4 w-3/6  z-0"" />
+    <img src="img/car.png" id="movingImage" class="absolute  bottom-0 right-2/4 w-3/6  z-0 transition-transform duration-1000 " />
 </div>
 
 <div class="fade-in-element flex flex-row m-10">
