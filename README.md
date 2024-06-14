@@ -1,7 +1,4 @@
 # Rent A Car
-> Database Systems Final Project 
-> Under Supervision of Prof. Dr. Yousry Taha
-> Faculty of Engineering Alexandria University
 
 > The system is built using HTML, Tailwind CSS, JavaScript, PHP and MySQL.
 
